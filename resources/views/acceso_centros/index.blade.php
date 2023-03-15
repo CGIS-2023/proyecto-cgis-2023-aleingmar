@@ -11,11 +11,11 @@
                 <div class="flex items-center mt-4 ml-2">
                     <form method="GET" action="{{ route('acceso_centros.create') }}">
                         <x-button type="subit" class="ml-4">
-                            @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id == 2)
+                            
                                 {{ __('Pedir nueva acceso') }}
-                            @else
+                            
                                 {{ __('Crear acceso') }}
-                            @endif
+                            
                         </x-button>
                     </form>
                 </div>
@@ -24,14 +24,13 @@
                         <thead>
                         <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">ID</th>
-                            @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 1)
-                            <th class="py-3 px-6 text-left">Médico</th>
-                            @endif
-                            @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id != 2)
-                            <th class="py-3 px-6 text-left">Paciente</th>
-                            @endif
-                            <th class="py-3 px-6 text-left">Fecha</th>
-                            <th class="py-3 px-6 text-left">Recetas</th>
+                           
+                            <th class="py-3 px-6 text-left">Entrada</th>
+                            
+                           
+                            <th class="py-3 px-6 text-left">Salida</th>
+                            
+                            
                             <th></th>
                         </tr>
                         </thead>
@@ -44,11 +43,19 @@
                                         <span class="font-medium">{{$acceso->id}}</span>
                                     </div>
                                 </td>
+
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$acceso->entrada->format('d/m/Y H:i')}}</span>
                                     </div>
                                 </td>
+
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$acceso->salida->format('d/m/Y H:i')}}</span>
+                                    </div>
+                                </td>
+
                                 
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-end">
@@ -87,9 +94,10 @@
 
                         </tbody>
                     </table>
-                    {{ $acceso_centros->links() }}
+                    {{ $accesos->links() }}
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+

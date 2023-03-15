@@ -28,6 +28,7 @@ class AccesoCentroController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -50,6 +51,7 @@ class AccesoCentroController extends Controller
     public function show(AccesoCentro $accesoCentro)
     {
         //
+        return view('accesos/show', ['accesos' => $accesoCentro]);
     }
 
     /**
@@ -84,5 +86,13 @@ class AccesoCentroController extends Controller
     public function destroy(AccesoCentro $accesoCentro)
     {
         //
+        if($accesoCentro->delete()) {
+            session()->flash('success', 'Acceso borrado correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        }
+        else{
+            session()->flash('warning', 'El acceso no pudo borrarse. Es probable que se deba a que tenga asociada información como citas que dependen de él.');
+        }
+        return redirect()->route('accesos.index');
+
     }
 }
