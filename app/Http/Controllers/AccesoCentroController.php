@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAccesoCentroRequest;
-use App\Http\Requests\UpdateAccesoCentroRequest;
+use App\Http\Requests\UpdateAccesoCentroRequest; //israel dice que ponga illuminate
+//use Illuminate\Http\Request;
 use App\Models\AccesoCentro;
 
 class AccesoCentroController extends Controller

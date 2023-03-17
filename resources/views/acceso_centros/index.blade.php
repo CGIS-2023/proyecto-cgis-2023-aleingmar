@@ -12,7 +12,6 @@
                     <form method="GET" action="{{ route('acceso_centros.create') }}">
                         <x-button type="subit" class="ml-4">
                             
-                                {{ __('Pedir nueva acceso') }}
                             
                                 {{ __('Crear acceso') }}
                             
