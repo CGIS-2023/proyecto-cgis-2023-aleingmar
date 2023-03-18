@@ -1,1 +1,27 @@
--->COPIAR CARPETA COMPONENTES Y LAYOUTS DENTRO DE LA CARPETA VISTAS
+--> 
+
+
+
+
+////////////////////////////////////////////////////
+
+
+CAMBIOS DE NOMBRES en archivos
+
+
+databaseseeder
+accesoseeder
+
+migraciones
+factorias
+modelos
+
+POLICIS
+
+controlador
+
+VISTAS
+
+HTTP/REQUEST
+
+RUTAS

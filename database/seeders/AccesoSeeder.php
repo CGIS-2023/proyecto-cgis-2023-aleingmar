@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AccesoCentroSeeder extends Seeder
+class AccesoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class AccesoCentroSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('acceso_centros')->insert([
+        DB::table('accesos')->insert([
             [ //no se si es personal_sanitario_id o PersonalSanitario_id
                 //'personal_sanitario_id' => 1,
                 'entrada' => '2021-05-30 07:15:00',

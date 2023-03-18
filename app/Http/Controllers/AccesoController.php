@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAccesoCentroRequest;
-use App\Http\Requests\UpdateAccesoCentroRequest; //israel dice que ponga illuminate
+use App\Http\Requests\StoreAccesoRequest;
+use App\Http\Requests\UpdateAccesoRequest; //israel dice que ponga illuminate
 //use Illuminate\Http\Request;
-use App\Models\AccesoCentro;
+use App\Models\Acceso;
 
-class AccesoCentroController extends Controller
+class AccesoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class AccesoCentroController extends Controller
     public function index()
     {
         // ordenarla de mas reciente
-        $accesos = AccesoCentro::orderBy('entrada', 'desc')->paginate(25);
-        return view('/acceso_centros/index', ['accesos' => $accesos]);
+        $accesos = Acceso::orderBy('entrada', 'desc')->paginate(25);
+        return view('/accesos/index', ['accesos' => $accesos]);
     }
 
     /**
@@ -35,10 +35,10 @@ class AccesoCentroController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAccesoCentroRequest  $request
+     * @param  \App\Http\Requests\StoreAccesoRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAccesoCentroRequest $request)
+    public function store(StoreAccesoRequest $request)
     {
         //
     }
@@ -46,22 +46,22 @@ class AccesoCentroController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AccesoCentro  $accesoCentro
+     * @param  \App\Models\Acceso  $acceso
      * @return \Illuminate\Http\Response
      */
-    public function show(AccesoCentro $accesoCentro)
+    public function show(Acceso $acceso)
     {
         //
-        return view('acceso_centros/show', ['acceso' => $accesoCentro]);
+        return view('accesos/show', ['acceso' => $acceso]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AccesoCentro  $accesoCentro
+     * @param  \App\Models\Acceso  $acceso
      * @return \Illuminate\Http\Response
      */
-    public function edit(AccesoCentro $accesoCentro)
+    public function edit(Acceso $acceso)
     {
         //
     }
@@ -69,11 +69,11 @@ class AccesoCentroController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAccesoCentroRequest  $request
-     * @param  \App\Models\AccesoCentro  $accesoCentro
+     * @param  \App\Http\Requests\UpdateAccesoRequest  $request
+     * @param  \App\Models\Acceso  $acceso
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAccesoCentroRequest $request, AccesoCentro $accesoCentro)
+    public function update(UpdateAccesoRequest $request, Acceso $acceso)
     {
         //
     }
@@ -81,13 +81,13 @@ class AccesoCentroController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AccesoCentro  $accesoCentro
+     * @param  \App\Models\Acceso  $acceso
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AccesoCentro $accesoCentro)
+    public function destroy(Acceso $acceso)
     {
         //
-        if($accesoCentro->delete()) {
+        if($acceso->delete()) {
             session()->flash('success', 'Acceso borrado correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
         }
         else{

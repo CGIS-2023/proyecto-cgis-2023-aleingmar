@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AccesoCentroController;
+use App\Http\Controllers\AccesoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +22,8 @@ Route::resources([
     //'medicos' => MedicoController::class,
 
     //ASOCIO EL CRUD DE ESTAS ENTIDADES CON SUS CONTROLADORES
-    'acceso_centros' => AccesoCentroController::class,
+    
+    'accesos' => AccesoController::class,
     //'cargos' => CargoController::class,
     //'profesions' => ProfesionController::class,
     //'personal_sanitarios' => PersonalSanitarioController::class,

@@ -9,8 +9,8 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     
-                        <x-nav-link :href="route('acceso_centros.index')" :active="request()->routeIs('acceso_centros.index') or request()->routeIs('acceso_centros.create') or request()->routeIs('acceso_centros.edit') or request()->routeIs('acceso_centros.show')">
-                            {{ __('Mis acceso_centros') }}
+                        <x-nav-link :href="route('accesos.index')" :active="request()->routeIs('accesos.index') or request()->routeIs('accesos.create') or request()->routeIs('accesos.edit') or request()->routeIs('accesos.show')">
+                            {{ __('Mis accesos') }}
                         </x-nav-link>
                     
                     

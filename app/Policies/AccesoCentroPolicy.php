@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\AccesoCentro;
+use App\Models\Acceso;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class AccesoCentroPolicy
+class AccesoPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class AccesoCentroPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\AccesoCentro  $accesoCentro
+     * @param  \App\Models\Acceso  $acceso
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, AccesoCentro $accesoCentro)
+    public function view(User $user, Acceso $acceso)
     {
         //
     }
@@ -48,10 +48,10 @@ class AccesoCentroPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\AccesoCentro  $accesoCentro
+     * @param  \App\Models\Acceso  $acceso
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, AccesoCentro $accesoCentro)
+    public function update(User $user, Acceso $acceso)
     {
         //
     }
@@ -60,10 +60,10 @@ class AccesoCentroPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\AccesoCentro  $accesoCentro
+     * @param  \App\Models\Acceso  $acceso
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, AccesoCentro $accesoCentro)
+    public function delete(User $user, Acceso $acceso)
     {
         //
     }
@@ -72,10 +72,10 @@ class AccesoCentroPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\AccesoCentro  $accesoCentro
+     * @param  \App\Models\Acceso  $acceso
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, AccesoCentro $accesoCentro)
+    public function restore(User $user, Acceso $acceso)
     {
         //
     }
@@ -84,10 +84,10 @@ class AccesoCentroPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\AccesoCentro  $accesoCentro
+     * @param  \App\Models\Acceso  $acceso
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, AccesoCentro $accesoCentro)
+    public function forceDelete(User $user, Acceso $acceso)
     {
         //
     }
