@@ -28,6 +28,9 @@
                             
                            
                             <th class="py-3 px-6 text-left">Salida</th>
+
+                            <th class="py-3 px-6 text-left">N_horas</th>
+                            
                             
                             
                             <th></th>
@@ -54,7 +57,12 @@
                                         <span class="font-medium">{{$acceso->salida->format('d/m/Y H:i')}}</span>
                                     </div>
                                 </td>
-
+                                
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$acceso->getHorasJornadaAttribute()}}</span>
+                                    </div>
+                                </td>
                                 
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-end">

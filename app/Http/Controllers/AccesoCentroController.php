@@ -16,7 +16,7 @@ class AccesoCentroController extends Controller
      */
     public function index()
     {
-        //
+        // ordenarla de mas reciente
         $accesos = AccesoCentro::orderBy('entrada', 'desc')->paginate(25);
         return view('/acceso_centros/index', ['accesos' => $accesos]);
     }
@@ -52,7 +52,7 @@ class AccesoCentroController extends Controller
     public function show(AccesoCentro $accesoCentro)
     {
         //
-        return view('accesos/show', ['accesos' => $accesoCentro]);
+        return view('acceso_centros/show', ['acceso' => $accesoCentro]);
     }
 
     /**
