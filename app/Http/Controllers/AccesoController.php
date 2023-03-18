@@ -29,6 +29,17 @@ class AccesoController extends Controller
     public function create()
     {
         //
+        //solo puedo crear accesos si soy de la direccion --> se podria hacer que si soy jefe de guardia de enfermeros
+        //poder hacerlo solo para los enfermeros
+
+        //$personal = PersonalSanitario::all();
+        //si soy de direccion
+
+        return view('accesos/create',); //['personal' => $personal]);
+
+
+        //if(Auth::user()->Auth::user()->cargo()->id == 2){return view('accesos/create', ['personal' => $personal]);}
+        //no pongo la condicion ya que solo podran pedir el create los de direccion
         
     }
 
@@ -41,6 +52,18 @@ class AccesoController extends Controller
     public function store(StoreAccesoRequest $request)
     {
         //
+        $reglas = [
+            'entrada' => 'required|datetime',
+            'salida' => 'required|datetime',
+            //'personal_sanitario_id' => 'required|exists:personal_sanitarios,id',
+        ];
+
+
+        $this->validate($request, $reglas);
+        $accesos = new Acceso($request->all());
+        $accesos->save();
+        session()->flash('success', 'Acceso creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('accesos.index');
     }
 
     /**
@@ -64,6 +87,16 @@ class AccesoController extends Controller
     public function edit(Acceso $acceso)
     {
         //
+
+        // tambien se podria ampliar a si soy jefe de guardia
+
+        //$personal = PersonalSanitario::all();
+
+        //if(Auth::user()->Auth::user()->cargo()->id == 2){return view('accesos/edit', ['accesos' => $acceso, 'personal' => $personal]);}
+       
+        return view('accesos/edit', ['acceso' => $acceso, ]);//'personal' => $personal]);
+
+
     }
 
     /**
@@ -76,6 +109,21 @@ class AccesoController extends Controller
     public function update(UpdateAccesoRequest $request, Acceso $acceso)
     {
         //
+
+        $reglas = [
+            'entrada' => 'required|datetime',
+            'salida' => 'required|datetime',
+            //'personal_sanitario_id' => 'required|exists:personal_sanitarios,id',
+        ];
+
+
+        $this->validate($request, $reglas);
+        $acceso->fill($request->all());
+        $acceso->save();
+        session()->flash('success', 'Acceso modificada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('accesos.index');
+
+
     }
 
     /**

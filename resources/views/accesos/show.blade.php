@@ -53,6 +53,19 @@
                         </div>
 
 
+                        <div class="mt-4">
+                            <x-label for="n_horas" :value="__('N_horas')" />
+
+                                <x-input class="block mt-1 w-full"
+                                         type="text"
+                                         disabled
+                                         value="{{$acceso->getHorasJornadaAttribute()}}"
+                                />
+
+                        </div>
+
+
+
 
                         <div class="flex items-center justify-end mt-4">
                             <x-button type="button" class="bg-red-800 hover:bg-red-700">
