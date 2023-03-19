@@ -13,6 +13,12 @@ Y empezar a proteger las cosas según que tipo de personal sea
 
 2/////
 
+Renovar navigation para que salgan los sanitarios
+Terminar CRUD sanitarios
+renovar crud de accesos para que salga el nombre del que esta asociado
+
+
+
 
 
 PREGUNTAS:
