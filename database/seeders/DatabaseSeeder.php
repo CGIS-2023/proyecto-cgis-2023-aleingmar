@@ -6,6 +6,11 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+
+
+    //MUY IMPORTANTE HAY QUE SE LLAMAN A LOS SEEDERS
+
+
     /**
      * Seed the application's database.
      *
@@ -18,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             AccesoSeeder::class,
+            UserSeeder::class,
 
         ]);
     }
