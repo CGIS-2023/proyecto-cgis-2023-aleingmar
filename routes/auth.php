@@ -22,14 +22,14 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
     ->name('register-medico'); */
 
 Route::post('/register', [RegisteredUserController::class, 'store'])
-                ->middleware('guest'); //creo que es que no es visible para los que ya han iniciado sesion
+                ->middleware('guest'); //solo son visibles para los que no han inisiado session
 
 
 // RUTAS PARA INICIAR SESION
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
-                ->name('login'); //nombre de la ruta
+                ->name('login'); //nombre de la ruta 
 
 
 

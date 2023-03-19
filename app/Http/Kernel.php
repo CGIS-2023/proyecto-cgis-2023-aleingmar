@@ -52,7 +52,12 @@ class Kernel extends HttpKernel
      *
      * @var array<string, class-string|string>
      */
-    protected $routeMiddleware = [
+
+
+//illuminate ->son parte del framework
+//app-> estan en mi proyecto los puedo editar (como auth y guest)
+
+    protected $routeMiddleware = [ 
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

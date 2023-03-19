@@ -13,9 +13,24 @@ use App\Http\Controllers\AccesoController;
 |
 */
 
+
+
+require __DIR__.'/auth.php'; //esto creo que es como si importara las rutas de auth
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard'); //tengo que estar autentificado creo
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
+//middleware->auth -->-> solo visibles para los que han iniciado sesion
 
 Route::resources([
     //No pongo medicos como route resource porque voy a añadirle middlewares diferentes
@@ -28,3 +43,7 @@ Route::resources([
     //'profesions' => ProfesionController::class,
     //'personal_sanitarios' => PersonalSanitarioController::class,
 ]);
+
+
+
+
