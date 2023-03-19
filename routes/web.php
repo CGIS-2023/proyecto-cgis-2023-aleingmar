@@ -31,7 +31,7 @@ Route::get('/', function () {
 
 
 //middleware->auth -->-> solo visibles para los que han iniciado sesion
-
+Route::middleware(['auth'])->group(function () {
 Route::resources([
     //No pongo medicos como route resource porque voy a añadirle middlewares diferentes
     //'medicos' => MedicoController::class,
@@ -43,7 +43,7 @@ Route::resources([
     //'profesions' => ProfesionController::class,
     //'personal_sanitarios' => PersonalSanitarioController::class,
 ]);
-
+});
 
 
 

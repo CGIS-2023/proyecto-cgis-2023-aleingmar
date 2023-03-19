@@ -132,7 +132,7 @@ return [
 
     'custom' => [
         'nuhsa' => [
-            'nuhsa' => 'El formato de :attribute no cumple con el formato NUHSA',
+            'nuhsa' => 'The :attribute is not NUHSA compliant',
         ],
     ],
 

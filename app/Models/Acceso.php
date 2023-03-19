@@ -10,7 +10,7 @@ class Acceso extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['entrada', 'salida', 'personal_sanitario_id'];
+    protected $fillable = ['entrada', 'salida',]; //'personal_sanitario_id'];
 
     #protected $casts = [];
     protected $casts = [

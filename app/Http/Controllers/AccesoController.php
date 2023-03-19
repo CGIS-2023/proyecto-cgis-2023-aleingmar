@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreAccesoRequest;
-use App\Http\Requests\UpdateAccesoRequest; //israel dice que ponga illuminate
-//use Illuminate\Http\Request;
+//se quitan estas ya que nosotros no vamos a tener en el proyecto esos docs(lo hemos borrado se crean por defecto) si no que lo vamos a 
+//confiar en illuminate
+//use App\Http\Requests\StoreAccesoRequest;
+//use App\Http\Requests\UpdateAccesoRequest; //israel dice que ponga illuminate
+
+
 use App\Models\Acceso;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class AccesoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         // ordenarla de mas reciente
@@ -21,11 +24,7 @@ class AccesoController extends Controller
         return view('/accesos/index', ['accesos' => $accesos]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create()
     {
         //
@@ -43,18 +42,13 @@ class AccesoController extends Controller
         
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreAccesoRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreAccesoRequest $request)
+    
+    public function store(Request $request)
     {
         //
         $reglas = [
-            'entrada' => 'required|datetime',
-            'salida' => 'required|datetime',
+            'entrada' => 'required|date', //creo que no se puede meter datetime como regla en el validate
+            'salida' => 'required|date',
             //'personal_sanitario_id' => 'required|exists:personal_sanitarios,id',
         ];
 
@@ -66,27 +60,17 @@ class AccesoController extends Controller
         return redirect()->route('accesos.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Acceso  $acceso
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Acceso $acceso)
     {
         //
         return view('accesos/show', ['acceso' => $acceso]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Acceso  $acceso
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit(Acceso $acceso)
     {
-        //
+        //PRESENTA EL FORMULARIO DE EDICION
 
         // tambien se podria ampliar a si soy jefe de guardia
 
@@ -99,26 +83,20 @@ class AccesoController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateAccesoRequest  $request
-     * @param  \App\Models\Acceso  $acceso
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateAccesoRequest $request, Acceso $acceso)
+   
+    public function update(Request $request, Acceso $acceso)
     {
         //
 
         $reglas = [
-            'entrada' => 'required|datetime',
-            'salida' => 'required|datetime',
+            'entrada' => 'required|date',
+            'salida' => 'required|date',
             //'personal_sanitario_id' => 'required|exists:personal_sanitarios,id',
         ];
 
 
-        $this->validate($request, $reglas);
-        $acceso->fill($request->all());
+        $this->validate($request, $reglas); //comprueba lo que has introducido con las reglas
+        $acceso->fill($request->all()); //lo metes en la variable acceso gracias al fillable
         $acceso->save();
         session()->flash('success', 'Acceso modificada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
         return redirect()->route('accesos.index');
@@ -126,12 +104,7 @@ class AccesoController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Acceso  $acceso
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Acceso $acceso)
     {
         //
