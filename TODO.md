@@ -1,13 +1,25 @@
 --> 
 
 
-PROBLEMAS:
+OBJETIVOS:
 1/////
-no me deja actualizar ni crear accesos me pone q estoy no autorizado
+
+
+
+
+Crear dependencias tambien de Cargo y de profesion
+Hacer su CRUD
+Y empezar a proteger las cosas según que tipo de personal sea
 
 2/////
 
 
+
+PREGUNTAS:
+
+-Pk hago el store y update con request illuminate y no como venia en app 
+-Como puedo poner un boton para lo del registro y acceder y todo eso?
+-Como puedo hacer para que una persona tenga varios users--> problema para las vistas
 
 ////////////////////////////////////////////////////
 

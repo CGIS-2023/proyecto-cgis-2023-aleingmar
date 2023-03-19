@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,4 +43,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function sanitario(){
+        return $this->hasOne(Sanitario::class);
+    }
+
+
+    /* public function cargo(){
+        return $this->hasManyThrough(Cargo::class, Sanitario::class);
+    }
+
+    public function profesion(){
+        return $this->hasManyThrough(Profesion::class, Sanitario::class);
+    } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

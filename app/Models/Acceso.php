@@ -10,18 +10,18 @@ class Acceso extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['entrada', 'salida',]; //'personal_sanitario_id'];
+    protected $fillable = ['entrada', 'salida','sanitario_id'];
 
     #protected $casts = [];
     protected $casts = [
         'entrada' => 'datetime:Y-m-d H:i',
         'salida' => 'datetime:Y-m-d H:i',
     ];
-    /*
-    public function personal_sanitario(){
-        return $this->belongsTo(PersonalSanitario::class);
+    
+    public function sanitario(){
+        return $this->belongsTo(Sanitario::class);
     }
-    */
+    
 
     //
 

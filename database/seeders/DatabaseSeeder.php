@@ -22,8 +22,11 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            AccesoSeeder::class,
+            //HAY QUE PONERLAS EN ORDEN CORRECTO COMO LAS MIGRACIONES
+
             UserSeeder::class,
+            SanitarioSeeder::class,
+            AccesoSeeder::class,
 
         ]);
     }

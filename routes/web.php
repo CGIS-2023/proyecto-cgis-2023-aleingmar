@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccesoController;
+use App\Http\Controllers\SanitarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,11 +38,10 @@ Route::resources([
     //'medicos' => MedicoController::class,
 
     //ASOCIO EL CRUD DE ESTAS ENTIDADES CON SUS CONTROLADORES
-    
     'accesos' => AccesoController::class,
     //'cargos' => CargoController::class,
     //'profesions' => ProfesionController::class,
-    //'personal_sanitarios' => PersonalSanitarioController::class,
+    'sanitarios' => SanitarioController::class,
 ]);
 });
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateAccesosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->dateTime('entrada');
             $table->dateTime('salida');
-            //$table->foreignId('personal_sanitario_id')->constrained()->nullable()->onDelete('cascade');
+            $table->foreignId('sanitario_id')->constrained()->onDelete('cascade');
 
         });
     }
