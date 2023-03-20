@@ -9,6 +9,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Acceso;
+use App\Models\Sanitario;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,10 +32,10 @@ class AccesoController extends Controller
         //solo puedo crear accesos si soy de la direccion --> se podria hacer que si soy jefe de guardia de enfermeros
         //poder hacerlo solo para los enfermeros
 
-        //$personal = PersonalSanitario::all();
+        $sanitarios = Sanitario::all();
         //si soy de direccion
 
-        return view('accesos/create',); //['personal' => $personal]);
+        return view('accesos/create', ['sanitarios' => $sanitarios]);
 
 
         //if(Auth::user()->Auth::user()->cargo()->id == 2){return view('accesos/create', ['personal' => $personal]);}
@@ -49,7 +50,7 @@ class AccesoController extends Controller
         $reglas = [
             'entrada' => 'required|date', //creo que no se puede meter datetime como regla en el validate
             'salida' => 'required|date',
-            //'personal_sanitario_id' => 'required|exists:personal_sanitarios,id',
+            'sanitario_id' => 'required|exists:sanitarios,id',
         ];
 
 
@@ -74,11 +75,11 @@ class AccesoController extends Controller
 
         // tambien se podria ampliar a si soy jefe de guardia
 
-        //$personal = PersonalSanitario::all();
+        $sanitarios = Sanitario::all();
 
         //if(Auth::user()->Auth::user()->cargo()->id == 2){return view('accesos/edit', ['accesos' => $acceso, 'personal' => $personal]);}
        
-        return view('accesos/edit', ['acceso' => $acceso, ]);//'personal' => $personal]);
+        return view('accesos/edit', ['acceso' => $acceso, 'sanitarios' => $sanitarios]);
 
 
     }
@@ -91,7 +92,7 @@ class AccesoController extends Controller
         $reglas = [
             'entrada' => 'required|date',
             'salida' => 'required|date',
-            //'personal_sanitario_id' => 'required|exists:personal_sanitarios,id',
+            'sanitario_id' => 'required|exists:sanitarios,id',
         ];
 
 

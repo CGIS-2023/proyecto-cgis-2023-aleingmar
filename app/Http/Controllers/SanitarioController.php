@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Sanitario;
+use App\Models\User;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
+//use Illuminate\Support\Facades\Auth;
+//use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class SanitarioController extends Controller
 {
@@ -90,8 +92,8 @@ class SanitarioController extends Controller
     public function edit(Sanitario $sanitario)
     {
         //
-        $cargos = Cargo::all();
-        $profesiones = Profesion::all();
+        //$cargos = Cargo::all();
+        //$profesiones = Profesion::all();
         return view('sanitarios/edit', ['sanitario' => $sanitario, ]);//'cargos' => $cargos, 'profesiones' => $profesiones]);
     }
 

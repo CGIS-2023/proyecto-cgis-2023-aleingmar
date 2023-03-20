@@ -30,6 +30,34 @@
                         @csrf
                         
 
+
+                        <!-- No se muy bien que hace este codigo -->
+                        <div class="mt-4">
+                            <x-label for="sanitario_id" :value="__('Sanitario')" />
+
+                            @isset($sanitario) 
+                                <x-input id="sanitario" class="block mt-1 w-full"
+                                         type="hidden"
+                                         name="sanitario_id"
+                                         :value="$sanitario->id"
+                                         required />
+                                <x-input class="block mt-1 w-full"
+                                         type="text"
+                                         disabled
+                                         value="{{$sanitario->user->name}} (ID: {{$sanitario->id}})"
+                                          />
+                            @else
+                            <x-select id="sanitario_id" name="sanitario_id" required>
+                                <option value="">{{__('Elige un sanitario')}}</option>
+                                @foreach ($sanitarios as $sanitario)
+                                    <option value="{{$sanitario->id}}" @if (old('sanitario_id') == $sanitario->id) selected @endif>{{$sanitario->user->name}} (ID: {{$sanitario->id}})</option>
+                                @endforeach
+                            </x-select>
+                            @endisset
+                        </div>
+
+
+
                         <div class="mt-4">
                             <x-label for="entrada" :value="__('Fecha y hora de entrada')" />
 

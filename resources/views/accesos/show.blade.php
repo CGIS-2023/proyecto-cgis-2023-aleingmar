@@ -30,6 +30,17 @@
                         @method('put')
 
                         <div class="mt-4">
+                            <x-label for="sanitario_id" :value="__('sanitario')" />
+
+                                <x-input class="block mt-1 w-full"
+                                         type="text"
+                                         disabled
+                                         value="{{$acceso->sanitario->user->name}} (ID: {{$acceso->sanitario->id}})"
+                                />
+
+                        </div>
+
+                        <div class="mt-4">
                             <x-label for="entrada" :value="__('Fecha y hora de entrada')" />
 
                             <x-input id="entrada" class="block mt-1 w-full"

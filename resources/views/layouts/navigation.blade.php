@@ -12,6 +12,10 @@
                         <x-nav-link :href="route('accesos.index')" :active="request()->routeIs('accesos.index') or request()->routeIs('accesos.create') or request()->routeIs('accesos.edit') or request()->routeIs('accesos.show')">
                             {{ __('Mis accesos') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('sanitarios.index')" :active="request()->routeIs('sanitarios.index') or request()->routeIs('sanitarios.create') or request()->routeIs('sanitarios.edit') or request()->routeIs('sanitarios.show')">
+                            {{ __('Sanitarios') }}
+                        </x-nav-link>
                     
                     
                 </div>

@@ -23,6 +23,8 @@
                         <thead>
                         <tr class="bg-gray-200 text-gray-900 uppercase text-sm leading-normal">
                             <th class="py-3 px-6 text-left">ID</th>
+
+                            <th class="py-3 px-6 text-left">Nombre</th>
                            
                             <th class="py-3 px-6 text-left">Entrada</th>
                             
@@ -43,6 +45,12 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$acceso->id}}</span>
+                                    </div>
+                                </td>
+
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$acceso->sanitario->user->name}}</span>
                                     </div>
                                 </td>
 

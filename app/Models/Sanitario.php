@@ -13,8 +13,8 @@ class Sanitario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['profesion_id', 'cargo_id'];
-
+    //protected $fillable = ['profesion_id', 'cargo_id'];
+    
     #protected $casts = [];
 
     #/////////////////// RELACIOMES ---> con esto creamos las relaciones entre los modelos y obtenemos
@@ -42,9 +42,10 @@ class Sanitario extends Model
     #/////////////////// QUERYS ---> cunsultas usando el ORM de eloquence
 
     public function getTiempoTrabajadoAttribute(){
-    // me gusstaria hacerlo en el ultimo mes
+    // me gusstaria hacerlo en el ultimo mes // Carbon::now()->month
 
         $accesos= $this-> accesos()->get();
+        
         $res=0;
         foreach ($accesos as $acceso) {
             $res= $res + ($acceso->getHorasJornadaAttribute());

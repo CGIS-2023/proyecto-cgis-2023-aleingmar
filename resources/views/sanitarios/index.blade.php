@@ -25,6 +25,8 @@
                             <th class="py-3 px-6 text-left">ID</th>
                            
                             <th class="py-3 px-6 text-left">Nombre</th>
+
+                            <th class="py-3 px-6 text-left">Correo</th>
                             
                             
                             
@@ -48,6 +50,11 @@
                                     </div>
                                 </td>
 
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$sanitario->user->email}}</span>
+                                    </div>
+                                </td> 
                                 
                                 
                                 <td class="py-3 px-6 text-center">

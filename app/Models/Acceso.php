@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -21,6 +22,12 @@ class Acceso extends Model
     public function sanitario(){
         return $this->belongsTo(Sanitario::class);
     }
+    
+
+    //NO FUNCIONA
+    /* public function user(){
+        return $this->hasManyThrough(User::class, Sanitario::class);
+    } */
     
 
     //
