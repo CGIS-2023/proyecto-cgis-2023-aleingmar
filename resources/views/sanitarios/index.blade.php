@@ -26,7 +26,13 @@
                            
                             <th class="py-3 px-6 text-left">Nombre</th>
 
+                            <th class="py-3 px-6 text-left">Cargo</th>
+
+                            <th class="py-3 px-6 text-left">Profesion</th>
+
                             <th class="py-3 px-6 text-left">Correo</th>
+
+                            
                             
                             
                             
@@ -43,7 +49,6 @@
                                         <span class="font-medium">{{$sanitario->id}}</span>
                                     </div>
                                 </td>
-
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$sanitario->user->name}}</span>
@@ -52,9 +57,24 @@
 
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
+                                        <span class="font-medium">{{$sanitario->cargo->name}}</span>
+                                    </div>
+                                </td>
+
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$sanitario->profesion->name}}</span>
+                                    </div>
+                                </td>
+
+                                
+
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
                                         <span class="font-medium">{{$sanitario->user->email}}</span>
                                     </div>
                                 </td> 
+
                                 
                                 
                                 <td class="py-3 px-6 text-center">

@@ -25,6 +25,9 @@
                             <th class="py-3 px-6 text-left">ID</th>
 
                             <th class="py-3 px-6 text-left">Nombre</th>
+
+                            <th class="py-3 px-6 text-left">Profesion</th>
+
                            
                             <th class="py-3 px-6 text-left">Entrada</th>
                             
@@ -51,6 +54,12 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$acceso->sanitario->user->name}}</span>
+                                    </div>
+                                </td>
+
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$acceso->sanitario->profesion->name}}</span>
                                     </div>
                                 </td>
 

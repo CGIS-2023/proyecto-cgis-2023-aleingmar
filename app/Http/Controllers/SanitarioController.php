@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Sanitario;
 use App\Models\User;
+use App\Models\Cargo;
+use App\Models\Profesion;
 
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Auth;
@@ -32,9 +34,9 @@ class SanitarioController extends Controller
     {
         //
         // solo direccion
-       // $cargos = Cargo::all();
-        //$profesiones = Profesion::all();
-        return view('sanitarios/create', );//['cargos' => $cargos, 'profesiones' => $profesiones]);
+        $cargos = Cargo::all();
+        $profesiones = Profesion::all();
+        return view('sanitarios/create', ['cargos' => $cargos, 'profesiones' => $profesiones]);
     }
 
     

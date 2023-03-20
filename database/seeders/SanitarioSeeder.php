@@ -20,29 +20,29 @@ class SanitarioSeeder extends Seeder
          DB::table('sanitarios')->insert([
             [   //administrador
 
-                //'profesion_id' => 2,
-                //'cargo_id' => 2,
+                'profesion_id' => 1,
+                'cargo_id' => 1,
                 'user_id' => 1
             ],
             [ //enfermero
 
-                /* 'profesion_id' => 2,
-                'cargo_id' => 1, */
+                'profesion_id' => 2,
+                'cargo_id' => 4, 
                 'user_id' => 2
             ],
             [ //medico
-                /* 'profesion_id' => 1,
-                'cargo_id' => 1, */
+                 'profesion_id' => 2,
+                'cargo_id' => 4, 
                 'user_id' => 3
             ],
             [ //direccion
-                /* 'profesion_id' => 1,
-                'cargo_id' => 1, */
+                 'profesion_id' => 3,
+                'cargo_id' => 2, 
                 'user_id' => 4
             ],
             [ //jefe de guardia
-                /* 'profesion_id' => 1,
-                'cargo_id' => 1, */
+                'profesion_id' => 2,
+                'cargo_id' => 3, 
                 'user_id' => 5
             ],
 

@@ -17,14 +17,18 @@ class CargoSeeder extends Seeder
         //
         DB::table('cargos')->insert([
             [ //este será el id=1
-                'name' => "Jefe de Guardia",
+                'name' => "Administrador",
             ],
             [
                 'name' => "Dirección",
+            ],//id= 3
+            [ 
+                'name' => "Jefe de Guardia",
             ],
-            [ //id= 3
+            [ 
                 'name' => "Profesional Normal",
             ],
+            
            
         ]);
     }

@@ -5,13 +5,13 @@ OBJETIVOS:
 1/////
 No funciona el create de sanitario --> pk tengo q terminar el fillable
 
-Crear dependencias tambien de Cargo y de profesion
-Hacer su CRUD
 Y empezar a proteger las cosas según que tipo de personal sea
 
 2/////
 
-
+renovar el show de accesos
+renovar el show de sanitarios, edit,
+HACER LOS PERMISOS
 
 
 

@@ -24,22 +24,22 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('12345678'),
             ],
             [
-                'name' => "Enfermero 1",
+                'name' => "Jorge Andaluz",
                 'email' => "enfermero@enfermero.com",
                 'password' => Hash::make('12345678'),
             ],
             [
-                'name' => "Médico 1",
+                'name' => "Cristian Nieto",
                 'email' => "medico@medico.com",
                 'password' => Hash::make('12345678'),
             ],
             [
-                'name' => "Direccion",
+                'name' => "Rosa Teamo",
                 'email' => "direccion@direccion.com",
                 'password' => Hash::make('12345678'),
             ],
             [
-                'name' => "Jefe de Guardia",
+                'name' => "María del Monte",
                 'email' => "jefeguardia@jefeguardia.com",
                 'password' => Hash::make('12345678'), //hasheo las contraseñas, y guardo solo los hashing
             ],

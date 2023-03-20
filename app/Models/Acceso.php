@@ -27,9 +27,12 @@ class Acceso extends Model
     //NO FUNCIONA
     /* public function user(){
         return $this->hasManyThrough(User::class, Sanitario::class);
-    } */
-    
+    } 
 
+    public function profesion(){
+        return $this->hasOneThrough(Profesion::class, Sanitario::class);
+    
+    }*/
     //
 
     public function getHorasJornadaAttribute(){

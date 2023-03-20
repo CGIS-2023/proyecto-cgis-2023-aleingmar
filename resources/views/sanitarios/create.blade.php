@@ -30,11 +30,39 @@
                         @csrf
                         
 
-                        <div>
+                            <div>
                                 <x-label for="name" :value="__('Nombre')" />
 
                                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
                             </div>
+
+
+                            <div class="mt-4">
+                                <x-label for="cargo_id" :value="__('Cargo')" />
+
+
+                                <x-select id="cargo_id" name="cargo_id" required>
+                                    <option value="">{{__('Elige una opción')}}</option>
+                                    @foreach ($cargos as $cargo)
+                                    <option value="{{$cargo->id}}" @if (old('cargo_id') == $cargo->id) selected @endif>{{$cargo->name}}</option>
+                                    @endforeach
+                                </x-select>
+                            </div>
+
+                            
+                            <div class="mt-4">
+                                <x-label for="profesion_id" :value="__('Profesion')" />
+
+
+                                <x-select id="profesion_id" name="profesion_id" required>
+                                    <option value="">{{__('Elige una opción')}}</option>
+                                    @foreach ($profesiones as $profesion)
+                                    <option value="{{$profesion->id}}" @if (old('profesion_id') == $profesion->id) selected @endif>{{$profesion->name}}</option>
+                                    @endforeach
+                                </x-select>
+                            </div>
+
+
 
                             <!-- Email Address -->
                             <div class="mt-4">
