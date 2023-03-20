@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             //HAY QUE PONERLAS EN ORDEN CORRECTO COMO LAS MIGRACIONES
 
             UserSeeder::class,
+            ProfesionSeeder::class,
+            CargoSeeder::class,
             SanitarioSeeder::class,
             AccesoSeeder::class,
 

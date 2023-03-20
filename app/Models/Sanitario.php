@@ -13,7 +13,7 @@ class Sanitario extends Model
 {
     use HasFactory;
 
-    //protected $fillable = ['profesion_id', 'cargo_id'];
+    protected $fillable = ['profesion_id', 'cargo_id'];
     
     #protected $casts = [];
 
@@ -28,14 +28,14 @@ class Sanitario extends Model
     public function accesos(){
         return $this->hasMany(Acceso::class);
     }
-    /*
+    
     public function cargo(){
         return $this->belongsTo(Cargo::class);
     }
 
     public function profesion(){
         return $this->belongsTo(Profesion::class);
-    } */
+    } 
 
 
 
