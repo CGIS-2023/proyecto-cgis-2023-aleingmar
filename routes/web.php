@@ -42,7 +42,12 @@ Route::resources([
     //'cargos' => CargoController::class,
     //'profesions' => ProfesionController::class,
     'sanitarios' => SanitarioController::class,
+    
 ]);
+
+    //PRUEBA
+    Route::get('/sanitarios/filtrar', [SanitarioController::class, 'filtrar_prueba'])->name('sanitarios.filtrar');
+
 });
 
 

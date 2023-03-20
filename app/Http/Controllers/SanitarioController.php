@@ -25,9 +25,23 @@ class SanitarioController extends Controller
 
 
     }
+    
+//////////////////////////PRUEBA//////////////////////////////////////////////////////////////
+    public function filtrar_prueba()
+    {
+        // solo llegan hasta aqui los usuarios de direccion
+        //filtro los enfermeros
+        $sanitarios = Sanitario::join('profesions', 'sanitarios.profesion_id', 'profesions.id')
+            ->select('*')
+            ->where('sanitarios.profesion_id', 2)
+            ->paginate(25);
 
+        return view('/sanitarios/index', ['sanitarios' => $sanitarios]);
+
+
+    }
    
-
+////////////////////////////////////////////////////////////////////////////////////////
 
 
     public function create()

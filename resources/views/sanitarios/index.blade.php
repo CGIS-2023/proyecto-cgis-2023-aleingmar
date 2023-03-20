@@ -17,7 +17,26 @@
                             
                         </x-button>
                     </form>
+                    
                 </div>
+
+
+                <!-- //////////////////////////////////////////////////////////// -->
+
+                <!-- Filtrar por profesion PRUEBA -->
+                <div class="flex items-center mt-4 ml-2">
+                    <form method="GET" action="{{ route('sanitarios.filtrar') }}">
+                        <x-button type="subit" class="ml-4">
+                            
+                            
+                                {{ __('Filtrar solo enfermeros') }}
+                            
+                        </x-button>
+                    </form>
+                </div>
+
+                <!-- //////////////////////////////////////////////////////////// -->
+
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table class="min-w-max w-full table-auto">
                         <thead>
