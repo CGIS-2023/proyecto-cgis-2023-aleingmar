@@ -9,8 +9,7 @@ Y empezar a proteger las cosas según que tipo de personal sea
 
 2/////
 
-renovar el show de accesos
-renovar el show de sanitarios, edit,
+
 HACER LOS PERMISOS
 
 

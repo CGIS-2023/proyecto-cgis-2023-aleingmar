@@ -108,9 +108,9 @@ class SanitarioController extends Controller
     public function edit(Sanitario $sanitario)
     {
         //
-        //$cargos = Cargo::all();
-        //$profesiones = Profesion::all();
-        return view('sanitarios/edit', ['sanitario' => $sanitario, ]);//'cargos' => $cargos, 'profesiones' => $profesiones]);
+        $cargos = Cargo::all();
+        $profesiones = Profesion::all();
+        return view('sanitarios/edit', ['sanitario' => $sanitario, 'cargos' => $cargos, 'profesiones' => $profesiones]);
     }
 
     

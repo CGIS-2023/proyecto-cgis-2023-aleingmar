@@ -41,6 +41,17 @@
                         </div>
 
                         <div class="mt-4">
+                            <x-label for="profesion_id" :value="__('Profesion')" />
+
+                                <x-input class="block mt-1 w-full"
+                                         type="text"
+                                         disabled
+                                         value="{{$acceso->sanitario->profesion->name}}"
+                                />
+
+                        </div>
+
+                        <div class="mt-4">
                             <x-label for="entrada" :value="__('Fecha y hora de entrada')" />
 
                             <x-input id="entrada" class="block mt-1 w-full"

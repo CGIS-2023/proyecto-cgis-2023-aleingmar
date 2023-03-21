@@ -29,10 +29,22 @@
                         @csrf
                         @method('put')
 
-                        <div>
+                            <div>
                                 <x-label for="name" :value="__('Nombre')" />
 
                                 <x-input id="name" readonly disabled class="block mt-1 w-full" type="text" name="name" :value="$sanitario->user->name" required autofocus />
+                            </div>
+
+                            <div>
+                                <x-label for="cargo" :value="__('Cargo')" />
+
+                                <x-input id="cargo" readonly disabled class="block mt-1 w-full" type="text" name="cargo" :value="$sanitario->cargo->name" required autofocus />
+                            </div>
+
+                            <div>
+                                <x-label for="profesion" :value="__('Profesion')" />
+
+                                <x-input id="profesion" readonly disabled class="block mt-1 w-full" type="text" name="profesion" :value="$sanitario->profesion->name" required autofocus />
                             </div>
 
                             <!-- Email Address -->
