@@ -45,8 +45,11 @@ Route::resources([
     
 ]);
 
-    //PRUEBA
-    Route::get('/sanitarios/filtrar', [SanitarioController::class, 'filtrar_prueba'])->name('sanitarios.filtrar');
+    //PRUEBA-->funciona con esta URL y no con (/sanitarios/filtrar)--> sospecho que es pk las url tienen que tener unas caracteristicas
+    //         no puedes poner lo que te de la gana--> esta es parecida a la del index normal
+
+
+    Route::get('/sanitarios_filtrar', [SanitarioController::class, 'filtrar_prueba'])->name('sanitarios.filtrar');
 
 });
 
