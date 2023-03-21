@@ -18,12 +18,12 @@ use Illuminate\Validation\Rule;
 class AccesoController extends Controller
 {
     
-    public function index()
+    /* public function index()
     {
         // ordenarla de mas reciente
         $accesos = Acceso::orderBy('entrada', 'desc')->paginate(25);
         return view('/accesos/index', ['accesos' => $accesos]);
-    }
+    } */
 
    
     public function create()
@@ -38,7 +38,7 @@ class AccesoController extends Controller
         return view('accesos/create', ['sanitarios' => $sanitarios]);
 
 
-        //if(Auth::user()->Auth::user()->cargo()->id == 2){return view('accesos/create', ['personal' => $personal]);}
+        //if(Auth::user()->Auth::user()->sanitario->cargo->id == 2){return view('accesos/create', ['personal' => $personal]);}
         //no pongo la condicion ya que solo podran pedir el create los de direccion
         
     }
@@ -77,7 +77,7 @@ class AccesoController extends Controller
 
         $sanitarios = Sanitario::all();
 
-        //if(Auth::user()->Auth::user()->cargo()->id == 2){return view('accesos/edit', ['accesos' => $acceso, 'personal' => $personal]);}
+        //if(Auth::user()->Auth::user()->sanitario->cargo->id == 2){return view('accesos/edit', ['accesos' => $acceso, 'personal' => $personal]);}
        
         return view('accesos/edit', ['acceso' => $acceso, 'sanitarios' => $sanitarios]);
 
@@ -118,4 +118,76 @@ class AccesoController extends Controller
         return redirect()->route('accesos.index');
 
     }
+
+
+    ////////////////////////////////////////////PRUEBAS////////////////////////////////////////////////////////////////////////
+
+    public function index()
+    {
+        // si soy de direccion ---> veo los accesos de todos
+        //o si soy admin
+
+        
+        $accesos = Acceso::orderBy('entrada', 'desc')->paginate(25);
+        
+
+        //auth es coger la info de la persona que ha iniciado secion
+
+        //si soy jefe de guardia enfermero veo todo lo de los enfermeros
+
+        if(Auth::user()->sanitario->cargo->id == 3 & Auth::user()->sanitario->profesion->id == 2){
+            //junta accesos y personal sanitario por esos atributos
+            //se queda solo con los atributos de la tabla accesos
+            // y filtra solo los que sean enfermeros
+
+            $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
+            ->select('accesos.*')
+            ->where('sanitarios.profesion_id', 2)
+            ->orderBy('accesos.entrada', 'desc')
+            ->paginate(25);
+           
+            // ->where('sanitarios.cargo_id', 1)
+
+            // auth::user() --> cogeme la instancia de usuario que ha logueado
+            //paginate es el metodo terminal
+        }
+
+
+
+        //si soy jefe de guardia medicos veo todo lo de los medicos
+
+        if(Auth::user()->sanitario->cargo->id == 3 & Auth::user()->sanitario->profesion->id == 3){
+
+            $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
+            ->select('accesos.*')
+            ->where('sanitarios.profesion_id', 2)
+            ->orderBy('accesos.entrada', 'desc')
+            ->paginate(25);
+           
+        }
+       
+        // si soy un profesional normal, veo solo mis accesos
+
+        if(Auth::user()->sanitario->cargo->id == 4){
+            
+            $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
+            ->select('accesos.*')
+            ->where('sanitarios.id', Auth::user()->sanitario->id)
+            ->orderBy('accesos.entrada', 'desc')
+            ->paginate(25);
+            }
+       
+            return view('/accesos/index', ['accesos' => $accesos]);
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

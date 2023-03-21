@@ -15,6 +15,21 @@ use Illuminate\Support\Facades\Hash;
 
 class SanitarioController extends Controller
 {
+
+    //SIRVE CREO QUE PARA PROTEGER EL CONTROLADOR--> SOLO SE PUEDE USAR SI ESTAS AUTENTIFICADO
+
+    /* public function __construct()
+    {
+        $this->authorizeResource(Cita::class, 'cita');
+    } */
+
+
+
+
+
+
+
+
     
     public function index()
     {

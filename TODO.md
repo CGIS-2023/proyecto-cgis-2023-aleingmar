@@ -3,16 +3,17 @@
 
 OBJETIVOS:
 1/////
-No funciona el create de sanitario --> pk tengo q terminar el fillable
 
-Y empezar a proteger las cosas según que tipo de personal sea
 
 2/////
 
 
 HACER LOS PERMISOS
 
-
+Recortar alomejor posibles usuarios
+mirar formularios de las diapos de html
+POLICIES
+mejorar los filtros
 
 
 
@@ -24,6 +25,9 @@ PREGUNTAS:
 -pk hasmanythrought no me funcionaba para conectar acceso a user directamente en su modelo
 -Que hace el codigo en edit acceso --> el de sanitario_id
 -PK NO ME FUNCIONA LA PRUEBA DEL FILTRO?????
+-PARA QUE SIRVE EL authorizeResource EN LOS CONTROLLERS
+
+-- PK NO FUNCIONA EL HASONE --> por ejemplo al hacer index accesos
 
 
 ////////////////////////////////////////////////////

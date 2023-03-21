@@ -3,7 +3,7 @@
 namespace App\Models;
 
 
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+//use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -50,13 +50,13 @@ class User extends Authenticatable
     }
 
 
-    /* public function cargo(){
-        return $this->hasManyThrough(Cargo::class, Sanitario::class);
+     public function cargo(){
+        return $this->hasOneThrough(Cargo::class, Sanitario::class);
     }
 
     public function profesion(){
-        return $this->hasManyThrough(Profesion::class, Sanitario::class);
-    } */
+        return $this->hasOneThrough(Profesion::class, Sanitario::class);
+    } 
 
 
 
