@@ -46,6 +46,14 @@ class SanitarioSeeder extends Seeder
                 'user_id' => 5
             ],
 
+
+
+            [ //tayron medico
+                'profesion_id' => 2,
+                'cargo_id' => 4, 
+                'user_id' => 6
+            ],
+
         ]);
     }
 }

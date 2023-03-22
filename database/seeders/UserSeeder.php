@@ -43,6 +43,12 @@ class UserSeeder extends Seeder
                 'email' => "jefeguardia@jefeguardia.com",
                 'password' => Hash::make('12345678'), //hasheo las contraseñas, y guardo solo los hashing
             ],
+
+            [
+                'name' => "Tayron Power",
+                'email' => "tayron@tayron.com",
+                'password' => Hash::make('12345678'), //hasheo las contraseñas, y guardo solo los hashing
+            ],
         ]);
     }
 }
