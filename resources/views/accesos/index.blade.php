@@ -8,6 +8,11 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
+
+            <!-- solo lo pueden crear el admin y la direccion -->
+
+            @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                 <div class="flex items-center mt-4 ml-2">
                     <form method="GET" action="{{ route('accesos.create') }}">
                         <x-button type="subit" class="ml-4">
@@ -18,6 +23,8 @@
                         </x-button>
                     </form>
                 </div>
+            @endif
+            
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table class="min-w-max w-full table-auto">
                         <thead>
@@ -92,6 +99,10 @@
                                             </a>
                                         </div>
 
+                                        <!-- solo lo pueden borrar y modificar el admin y la direccion -->
+
+                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
+                            
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a href="{{route('accesos.edit', $acceso->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -99,6 +110,9 @@
                                                 </svg>
                                             </a>
                                         </div>
+                                        @endif
+
+                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <form id="delete-form-{{$acceso->id}}" method="POST" action="{{ route('accesos.destroy', $acceso->id) }}">
                                                 @csrf
@@ -111,6 +125,7 @@
                                             </form>
 
                                         </div>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
