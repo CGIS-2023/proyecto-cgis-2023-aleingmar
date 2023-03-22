@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Sanitario;
+use App\Models\Cargo;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -10,83 +11,62 @@ class SanitarioPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
+    
+
+     //referencia con el index del controlador de sanitario
     public function viewAny(User $user)
     {
-        //
+        return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) || ($user->sanitario->cargo->id==3));
     }
 
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario  $sanitario
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
+    
     public function view(User $user, Sanitario $sanitario)
     {
-        //
+        $res=false;
+
+        //si soy jefe de guardia, direccion y admin
+        if(($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) || ($user->sanitario->cargo->id==3) ){
+
+            $res=true;
+
+        }
+        // todos pueden acceder a su sanitario
+        if ($user->sanitario->id==$sanitario->id){
+            $res=true;
+        }
+
+
+        return $res;
     }
 
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
+    // SOLO PUEDO CREAR MODIFICAR Y BORRAR SI SOY ADMIN O DE DIRECCION
     public function create(User $user)
     {
         //
+        return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) );
     }
 
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario  $sanitario
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
+    
     public function update(User $user, Sanitario $sanitario)
     {
         //
+        return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) );
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario  $sanitario
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
+    
     public function delete(User $user, Sanitario $sanitario)
     {
         //
+        return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) );
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario  $sanitario
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
+    
     public function restore(User $user, Sanitario $sanitario)
     {
         //
     }
 
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario  $sanitario
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
+    
     public function forceDelete(User $user, Sanitario $sanitario)
     {
         //

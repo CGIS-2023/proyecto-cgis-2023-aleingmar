@@ -50,8 +50,8 @@ class User extends Authenticatable
     }
 
 
-     public function cargo(){
-        return $this->hasOneThrough(Cargo::class, Sanitario::class);
+     public function getCargoAttribute(){
+        return $this->sanitario->cargo;
     }
 
     public function profesion(){

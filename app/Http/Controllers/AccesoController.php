@@ -17,6 +17,11 @@ use Illuminate\Validation\Rule;
 
 class AccesoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Acceso::class, 'acceso');
+    } 
     
     /* public function index()
     {
@@ -179,9 +184,6 @@ class AccesoController extends Controller
        
             return view('/accesos/index', ['accesos' => $accesos]);
     }
-
-
-
 
 
 

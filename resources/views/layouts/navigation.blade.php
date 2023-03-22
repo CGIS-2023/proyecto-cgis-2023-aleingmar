@@ -12,17 +12,23 @@
                         <x-nav-link :href="route('accesos.index')" :active="request()->routeIs('accesos.index') or request()->routeIs('accesos.create') or request()->routeIs('accesos.edit') or request()->routeIs('accesos.show')">
                             {{ __('Mis accesos') }}
                         </x-nav-link>
-
+                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 3)
                         <x-nav-link :href="route('sanitarios.index')" :active="request()->routeIs('sanitarios.index') or request()->routeIs('sanitarios.create') or request()->routeIs('sanitarios.edit') or request()->routeIs('sanitarios.show')">
                             {{ __('Sanitarios') }}
                         </x-nav-link>
-                    
+                        @endif
+                        
+                        
+
                     
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+
+            <!-- x-dropdown es para hacer un desplegable, y los x-dropdown-link syon para cada desplegado dentro de la lista-->
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
@@ -48,11 +54,16 @@
                                 {{ __('Log out') }}
                             </x-dropdown-link>
                         </form>
-                        <!-- @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id == 1)
-                        <x-dropdown-link :href="route('medicos.edit', Auth::user()->medico->id)">
+
+                        <!-- IMPORTANTE, le paso como parametro al show lo que pulso en el desplegable-->
+                       
+                        <x-dropdown-link :href="route('sanitarios.show', Auth::user()->sanitario->id)">
                             {{ __('Mi perfil') }}
                         </x-dropdown-link>
-                        @endif -->
+                       
+
+
+
                     </x-slot>
                 </x-dropdown>
             </div>

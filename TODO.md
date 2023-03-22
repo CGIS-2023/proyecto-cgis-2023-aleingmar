@@ -24,8 +24,8 @@ PREGUNTAS:
 -Como puedo hacer para que una persona tenga varios users--> problema para las vistas
 -pk hasmanythrought no me funcionaba para conectar acceso a user directamente en su modelo
 -Que hace el codigo en edit acceso --> el de sanitario_id
--PK NO ME FUNCIONA LA PRUEBA DEL FILTRO?????
--PARA QUE SIRVE EL authorizeResource EN LOS CONTROLLERS
+
+
 
 -- PK NO FUNCIONA EL HASONE --> por ejemplo al hacer index accesos
 

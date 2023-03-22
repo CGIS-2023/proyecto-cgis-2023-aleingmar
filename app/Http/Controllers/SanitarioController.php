@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Sanitario;
 use App\Models\User;
 use App\Models\Cargo;
@@ -16,30 +17,32 @@ use Illuminate\Support\Facades\Hash;
 class SanitarioController extends Controller
 {
 
-    //SIRVE CREO QUE PARA PROTEGER EL CONTROLADOR--> SOLO SE PUEDE USAR SI ESTAS AUTENTIFICADO
+    //SIRVE PARA CONECTAR CON LAS POLICIES
 
-    /* public function __construct()
+     public function __construct()
     {
-        $this->authorizeResource(Cita::class, 'cita');
-    } */
-
-
-
-
-
-
+        $this->authorizeResource(Sanitario::class, 'sanitario');
+    } 
 
 
     
-    public function index()
+     public function index()
     {
+        //si soy admin o de dir veo todos los sanitarios
+        if(Auth::user()->sanitario->cargo->id == 1 || Auth::user()->sanitario->cargo->id == 2 ){
+            $sanitarios = Sanitario::paginate(25);
+        }
+        //con el DB no funciona pk te dan las cosas como string
         // solo llegan hasta aqui los usuarios de direccion
+        
+        if(Auth::user()->sanitario->cargo->id == 3 ){
 
-        $sanitarios = Sanitario::paginate(25);
+        $cargo= Auth::user()->cargo->id;
+        $sanitarios = Sanitario::where('sanitarios.cargo_id', $cargo)->paginate(25);
+        }
         return view('/sanitarios/index', ['sanitarios' => $sanitarios]);
 
-
-    }
+    }  
     
 //////////////////////////PRUEBA//////////////////////////////////////////////////////////////
     public function filtrar_prueba()
@@ -173,4 +176,16 @@ class SanitarioController extends Controller
         }
         return redirect()->route('sanitarios.index');
     }
+
+    ////////////////////////////////////////////PRUEBAS////////////////////////////////////////////////////////////////////////
+
+     
+        // FILTROS
+    /* $sanitarios_query = Sanitario::where('sanitarios.cargo_id', $cargo);
+    if($request->input('profesion_id')){
+        $sanitarios_query->where()
+    }
+    $sanitarios = $sanitarios_query->paginate(25);
+    return view('/sanitarios/index', ['sanitarios' => $sanitarios]); */
+
 }
