@@ -8,6 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                 <div class="flex items-center mt-4 ml-2">
                     <form method="GET" action="{{ route('sanitarios.create') }}">
                         <x-button type="subit" class="ml-4">
@@ -19,10 +20,10 @@
                     </form>
                     
                 </div>
-
+            @endif
 
                 <!-- //////////////////////////////////////////////////////////// -->
-
+                @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                 <!-- Filtrar por profesion PRUEBA -->
                 <div class="flex items-center mt-4 ml-2">
                     <form method="GET" action="{{ route('sanitarios.filtrar') }}">
@@ -34,7 +35,7 @@
                         </x-button>
                     </form>
                 </div>
-
+                @endif
                 <!-- //////////////////////////////////////////////////////////// -->
 
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -98,6 +99,7 @@
                                 
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-end">
+
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a href="{{route('sanitarios.show', $sanitario->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,6 +109,7 @@
                                             </a>
                                         </div>
 
+                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a href="{{route('sanitarios.edit', $sanitario->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,6 +117,8 @@
                                                 </svg>
                                             </a>
                                         </div>
+
+                                        
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <form id="delete-form-{{$sanitario->id}}" method="POST" action="{{ route('sanitarios.destroy', $sanitario->id) }}">
                                                 @csrf
@@ -124,7 +129,7 @@
                                                     </svg>
                                                 </a>
                                             </form>
-
+                                        @endif
                                         </div>
                                     </div>
                                 </td>

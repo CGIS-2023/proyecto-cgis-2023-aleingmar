@@ -16,7 +16,8 @@ class SanitarioPolicy
      //referencia con el index del controlador de sanitario
     public function viewAny(User $user)
     {
-        return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) || ($user->sanitario->cargo->id==3));
+        #return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) || ($user->sanitario->cargo->id==3));
+        return true;
     }
 
     

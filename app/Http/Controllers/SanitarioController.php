@@ -35,11 +35,13 @@ class SanitarioController extends Controller
         //con el DB no funciona pk te dan las cosas como string
         // solo llegan hasta aqui los usuarios de direccion
         
-        if(Auth::user()->sanitario->cargo->id == 3 ){
+        if(Auth::user()->cargo->id == 3 ){
 
-        $cargo= Auth::user()->cargo->id;
-        $sanitarios = Sanitario::where('sanitarios.cargo_id', $cargo)->paginate(25);
+        $profesion= Auth::user()->sanitario->profesion->id;
+        $sanitarios = Sanitario::where('sanitarios.profesion_id', $profesion)->paginate(25);
         }
+
+
         return view('/sanitarios/index', ['sanitarios' => $sanitarios]);
 
     }  

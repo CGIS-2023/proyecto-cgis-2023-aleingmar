@@ -54,9 +54,9 @@
                                 <x-input id="email" readonly disabled class="block mt-1 w-full" type="email" name="email" :value="$sanitario->user->email" required />
                             </div>
 
+                        <!-- si no soy un profesional ormal me vuelvo al index -->
 
-
-
+                            @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id != 4 )
                         <div class="flex items-center justify-end mt-4">
                             <x-button type="button" class="bg-red-800 hover:bg-red-700">
                                 <a href={{route('sanitarios.index')}}>
@@ -64,6 +64,20 @@
                                 </a>
                             </x-button>
                         </div>
+                        @endif
+
+                        <!-- si soy normal me vuelvo a dashboard mismo -->
+
+                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 4 )
+                        <div class="flex items-center justify-end mt-4">
+                            <x-button type="button" class="bg-red-800 hover:bg-red-700">
+                                <a href={{route('dashboard')}}>
+                                    {{ __('Volver') }}
+                                </a>
+                            </x-button>
+                        </div>
+                        @endif
+
                 </div>
             </div>
         </div>
@@ -75,6 +89,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
+            @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                 <div class="flex items-center mt-4 ml-2">
                     <form method="GET" action="{{ route('accesos.create') }}">
                         <x-button type="subit" class="ml-4">
@@ -85,6 +101,7 @@
                         </x-button>
                     </form>
                 </div>
+            @endif
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table class="min-w-max w-full table-auto">
                         <thead>
@@ -150,6 +167,7 @@
                                             </a>
                                         </div>
 
+                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a href="{{route('accesos.edit', $acceso->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -169,6 +187,7 @@
                                             </form>
 
                                         </div>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
