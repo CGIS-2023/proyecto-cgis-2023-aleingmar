@@ -11,8 +11,14 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
+     //hay que poner el orden correcto de migraciones
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call([
+            AccesoCentroSeeder::class,
+
+        ]);
     }
 }

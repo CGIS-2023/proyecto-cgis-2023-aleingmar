@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AccesoCentroController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resources([
+    //No pongo medicos como route resource porque voy a añadirle middlewares diferentes
+    //'medicos' => MedicoController::class,
+
+    //ASOCIO EL CRUD DE ESTAS ENTIDADES CON SUS CONTROLADORES
+    'acceso_centros' => AccesoCentroController::class,
+    //'cargos' => CargoController::class,
+    //'profesions' => ProfesionController::class,
+    //'personal_sanitarios' => PersonalSanitarioController::class,
+]);
