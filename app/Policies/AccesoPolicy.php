@@ -36,7 +36,7 @@ class AccesoPolicy
 
         }
         // todos pueden acceder a su sanitario
-        if ($user->sanitario->id==$acceso->id){
+        if ($user->sanitario->id==$acceso->sanitario->id){
             $res=true;
         }
 
