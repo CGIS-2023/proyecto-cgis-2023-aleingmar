@@ -32,6 +32,8 @@ PREGUNTAS:
 -- PK NO ME FUNCIONA LA BUSQUEDA NORMAL
 -- cOMO PODRIA SELECCIONAR Y MANDAR DOS PROFESIONES EN EL DESPEGABLE
 
+--COMO CREAR NUEVO METODO DE LA POLICIE para el filtrar de sanitarios (metodo del controller)
+
 ////////////////////////////////////////////////////
 
 CAMBIOS DE NOMBRES en archivos: cosas que hay que tocar

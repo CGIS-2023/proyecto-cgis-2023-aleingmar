@@ -25,7 +25,8 @@
                 
 
                 <!-- ////////////////////////////PRUEBA 2: FILTRADO//////////////////////////////// -->
-                @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
+                @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || 
+                \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1)
                 <!-- Filtrar por profesion PRUEBA -->
 
                 <div class="flex items-center mt-4 ml-2" >
@@ -47,16 +48,18 @@
                         </div>
                     </form>
                 </div>
+                
                 @endif
-
                 <!-- ///////////////////////FILTRO DE BUSQUEDA///////////////////////////////////// -->
-
+                @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || 
+                \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 ||
+                Auth::user()->sanitario->cargo->id == 3)
 
                     <form class="d-flex float-right" role="search" action="{{ route('sanitarios.filtrar') }}">
                         <input name="buscarpor" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
                         <button class="btn btn-success" type="submit">Search</button>
                     </form>
-
+                @endif
                 
                 <!-- //////////////////////////////////////////////////////////// -->
 

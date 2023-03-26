@@ -17,7 +17,14 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array<class-string, class-string>
      */
+
+
+     //SIRVE PARA ASOCIAR POLICIES A LAS ENTIDADES
     protected $policies = [
+        Acceso::class => AccesoPolicy::class,
+        Sanitario::class => SanitarioPolicy::class,
+        Cargo::class => CargoPolicy::class,
+        Profesion::class => ProfesionPolicy::class
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 

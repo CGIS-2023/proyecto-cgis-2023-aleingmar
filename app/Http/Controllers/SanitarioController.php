@@ -33,10 +33,7 @@ class SanitarioController extends Controller
 
             //REVISAR SOLO QUERIA QUEDARME CON SANITARIO
             $sanitarios_query = Sanitario::join('users', 'sanitarios.profesion_id', 'users.id')
-            ->select('*');
-
-            //le paso las profesiones para poder filtrar por profesiones y que salga en el desplegable
-            //$profesiones= Profesion::paginate(25); 
+            ->select('*');  
         }
         //con el DB no funciona pk te dan las cosas como string
         // solo llegan hasta aqui los usuarios de direccion
@@ -45,9 +42,10 @@ class SanitarioController extends Controller
 
         $profesion= Auth::user()->sanitario->profesion->id;
         $sanitarios_query = Sanitario::where('sanitarios.profesion_id', $profesion);
+        
         }
 
-        $profesiones= Profesion::paginate(25); 
+        
 
         ////PARA HACER EL FILTRO--> significa que si hay input lo añada a la sentencia
         
@@ -55,6 +53,11 @@ class SanitarioController extends Controller
             $sanitarios_query = $sanitarios_query->where('sanitarios.profesion_id', $request->get('profesion_id')); //se puede tambien con input
             
         }
+
+
+        //le paso las profesiones para poder filtrar por profesiones y que salga en el desplegable
+            //a estos les paso todas
+        $profesiones= Profesion::paginate(25); 
 
         $sanitarios = $sanitarios_query->paginate(25);
         return view('/sanitarios/index', ['sanitarios' => $sanitarios, 'profesiones' => $profesiones, ]);

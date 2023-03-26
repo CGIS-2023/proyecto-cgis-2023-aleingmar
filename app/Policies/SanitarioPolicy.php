@@ -61,6 +61,7 @@ class SanitarioPolicy
         return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) );
     }
 
+    //////////////////////////////////////////
     
     public function restore(User $user, Sanitario $sanitario)
     {
