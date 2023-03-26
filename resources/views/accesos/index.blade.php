@@ -24,6 +24,18 @@
                     </form>
                 </div>
             @endif
+
+
+
+            <!-- ///////////////////////////////////////////////// -->
+            
+                <form class="d-flex float-right" role="search" action="{{ route('accesos.index') }}">
+                        <input name="buscarFecha" class="form-control me-2" type="date" placeholder="Search" aria-label="Search" >
+                        <button class="btn btn-success" type="submit">Buscar</button>
+                    </form>
+
+            
+            <!-- ///////////////////////////////////////////////// -->
             
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table class="min-w-max w-full table-auto">

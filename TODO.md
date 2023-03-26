@@ -29,6 +29,8 @@ PREGUNTAS:
 
 -- PK NO FUNCIONA EL HASONE --> por ejemplo al hacer index accesos
 
+-- PK NO ME FUNCIONA LA BUSQUEDA NORMAL
+-- cOMO PODRIA SELECCIONAR Y MANDAR DOS PROFESIONES EN EL DESPEGABLE
 
 ////////////////////////////////////////////////////
 

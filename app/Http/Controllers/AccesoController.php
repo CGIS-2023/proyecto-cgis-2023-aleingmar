@@ -127,13 +127,13 @@ class AccesoController extends Controller
 
     ////////////////////////////////////////////PRUEBAS////////////////////////////////////////////////////////////////////////
 
-    public function index()
+    public function index(Request $request)
     {
         // si soy de direccion ---> veo los accesos de todos
         //o si soy admin
 
         
-        $accesos = Acceso::orderBy('entrada', 'desc')->paginate(25);
+        $accesos = Acceso::orderBy('entrada', 'desc');//->paginate(25);
         
 
         //auth es coger la info de la persona que ha iniciado secion
@@ -148,8 +148,8 @@ class AccesoController extends Controller
             $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
             ->select('accesos.*')
             ->where('sanitarios.profesion_id', 2)
-            ->orderBy('accesos.entrada', 'desc')
-            ->paginate(25);
+            ->orderBy('accesos.entrada', 'desc');
+            //->paginate(25);
            
             // ->where('sanitarios.cargo_id', 1)
 
@@ -166,8 +166,8 @@ class AccesoController extends Controller
             $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
             ->select('accesos.*')
             ->where('sanitarios.profesion_id', 2)
-            ->orderBy('accesos.entrada', 'desc')
-            ->paginate(25);
+            ->orderBy('accesos.entrada', 'desc');
+            //->paginate(25);
            
         }
        
@@ -178,9 +178,18 @@ class AccesoController extends Controller
             $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
             ->select('accesos.*')
             ->where('sanitarios.id', Auth::user()->sanitario->id)
-            ->orderBy('accesos.entrada', 'desc')
-            ->paginate(25);
+            ->orderBy('accesos.entrada', 'desc');
+            //->paginate(25);
             }
+
+             ////PARA HACER EL FILTRO--> significa que si hay input lo añada a la sentencia
+        
+        if($request->input('buscarFecha')){ //si hay un imput
+            $accesos = $accesos->whereDate('accesos.entrada', '>', $request->get('buscarFecha')); //se puede tambien con input
+            
+        }
+
+        $accesos = $accesos->paginate(25);
        
             return view('/accesos/index', ['accesos' => $accesos]);
     }

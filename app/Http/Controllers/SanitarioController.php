@@ -76,7 +76,7 @@ public function filtrar_prueba(Request $request)
 
     if($request->input('buscarpor')){
         $buscarpor= $request->get('buscarpor');
-        $sanitarios_query = $sanitarios_query->where('users.name', 'like', '%'.$buscarpor.'%'); //se puede tambien con input
+        $sanitarios_query = $sanitarios_query->where('users.name', 'like', '%$buscarpor%'); //se puede tambien con input
         
     }
 
