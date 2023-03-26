@@ -26,11 +26,17 @@ class SanitarioController extends Controller
 
 
     
-     public function index()
+     public function index(Request $request)
     {
         //si soy admin o de dir veo todos los sanitarios
         if(Auth::user()->sanitario->cargo->id == 1 || Auth::user()->sanitario->cargo->id == 2 ){
-            $sanitarios = Sanitario::paginate(25);
+
+            //REVISAR SOLO QUERIA QUEDARME CON SANITARIO
+            $sanitarios_query = Sanitario::join('users', 'sanitarios.profesion_id', 'users.id')
+            ->select('*');
+
+            //le paso las profesiones para poder filtrar por profesiones y que salga en el desplegable
+            //$profesiones= Profesion::paginate(25); 
         }
         //con el DB no funciona pk te dan las cosas como string
         // solo llegan hasta aqui los usuarios de direccion
@@ -38,28 +44,48 @@ class SanitarioController extends Controller
         if(Auth::user()->cargo->id == 3 ){
 
         $profesion= Auth::user()->sanitario->profesion->id;
-        $sanitarios = Sanitario::where('sanitarios.profesion_id', $profesion)->paginate(25);
+        $sanitarios_query = Sanitario::where('sanitarios.profesion_id', $profesion);
         }
 
+        $profesiones= Profesion::paginate(25); 
 
-        return view('/sanitarios/index', ['sanitarios' => $sanitarios]);
+        ////PARA HACER EL FILTRO--> significa que si hay input lo añada a la sentencia
+        
+        if($request->input('profesion_id')){ //si hay un imput
+            $sanitarios_query = $sanitarios_query->where('sanitarios.profesion_id', $request->get('profesion_id')); //se puede tambien con input
+            
+        }
+
+        $sanitarios = $sanitarios_query->paginate(25);
+        return view('/sanitarios/index', ['sanitarios' => $sanitarios, 'profesiones' => $profesiones, ]);
 
     }  
     
 //////////////////////////PRUEBA//////////////////////////////////////////////////////////////
-    public function filtrar_prueba()
-    {
-        // solo llegan hasta aqui los usuarios de direccion
-        //filtro los enfermeros
-        $sanitarios = Sanitario::join('profesions', 'sanitarios.profesion_id', 'profesions.id')
-            ->select('*')
-            ->where('sanitarios.profesion_id', 2)
-            ->paginate(25);
+public function filtrar_prueba(Request $request)
+{
 
-        return view('/sanitarios/index', ['sanitarios' => $sanitarios]);
+    // solo llegan hasta aqui los usuarios de direccion
+    //filtro los enfermeros
+    $sanitarios_query = Sanitario::join('users', 'sanitarios.profesion_id', 'users.id')
+        ->select('*');
+        //->where('users.name', 'like', '%'.$buscarpor.'%')
 
+    
+    $profesiones= Profesion::paginate(25); 
 
+    if($request->input('buscarpor')){
+        $buscarpor= $request->get('buscarpor');
+        $sanitarios_query = $sanitarios_query->where('users.name', 'like', '%'.$buscarpor.'%'); //se puede tambien con input
+        
     }
+
+    $sanitarios = $sanitarios_query->paginate(25);
+    return view('/sanitarios/index', ['sanitarios' => $sanitarios, 'profesiones' => $profesiones,]);
+
+
+}
+    
    
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -190,4 +216,25 @@ class SanitarioController extends Controller
     $sanitarios = $sanitarios_query->paginate(25);
     return view('/sanitarios/index', ['sanitarios' => $sanitarios]); */
 
+
+    //BUSCADOR
+    /* public function filtrar_prueba(Request $request)
+    {
+        $buscarpor= $request->get('buscarpor');
+
+        // solo llegan hasta aqui los usuarios de direccion
+        //filtro los enfermeros
+        $sanitarios = Sanitario::join('users', 'sanitarios.profesion_id', 'users.id')
+            ->select('*')
+            ->where('users.name', 'like', '%'.$buscarpor.'%')
+            //->where('sanitarios.profesion_id', $profesion->id)
+            ->paginate(25);
+        
+        $profesiones= Profesion::paginate(25); 
+
+        return view('/sanitarios/index', ['sanitarios' => $sanitarios, 'profesiones' => $profesiones, 'buscarpor'=>$buscarpor]);
+
+
+    }
+     */
 }

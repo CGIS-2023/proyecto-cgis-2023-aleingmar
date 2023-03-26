@@ -22,20 +22,42 @@
                 </div>
             @endif
 
-                <!-- //////////////////////////////////////////////////////////// -->
+                
+
+                <!-- ////////////////////////////PRUEBA 2: FILTRADO//////////////////////////////// -->
                 @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                 <!-- Filtrar por profesion PRUEBA -->
-                <div class="flex items-center mt-4 ml-2">
-                    <form method="GET" action="{{ route('sanitarios.filtrar') }}">
-                        <x-button type="subit" class="ml-4">
-                            
-                            
-                                {{ __('Filtrar solo enfermeros') }}
-                            
-                        </x-button>
+
+                <div class="flex items-center mt-4 ml-2" >
+                    <form method="GET" action="{{ route('sanitarios.index') }}">
+                        <x-select id="profesion_id" name="profesion_id" class="ml-4">
+                                    <option value="">{{__('Filtrar por profesion')}}</option> <!-- value en blaco (es como si no tuviera) -->
+                                    @foreach ($profesiones as $profesion)
+                                    <option value="{{$profesion->id}}" @if (old('profesion_id') == $profesion->id) selected @endif>{{$profesion->name}}</option>
+                                    @endforeach
+                                    
+                        </x-select>
+
+                        <div class="flex items-center justify-end mt-4">
+                        <x-button class="ml-4">
+                                {{ __('Filtrar') }}
+                            </x-button>
+                            <!-- <<br> -->
+                            <!-- <button type="submit">Ver Usuarios</button> -->
+                        </div>
                     </form>
                 </div>
                 @endif
+
+                <!-- ///////////////////////FILTRO DE BUSQUEDA///////////////////////////////////// -->
+
+
+                    <form class="d-flex float-right" role="search" action="{{ route('sanitarios.filtrar') }}">
+                        <input name="buscarpor" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
+
+                
                 <!-- //////////////////////////////////////////////////////////// -->
 
                 <div class="p-6 bg-white border-b border-gray-200">

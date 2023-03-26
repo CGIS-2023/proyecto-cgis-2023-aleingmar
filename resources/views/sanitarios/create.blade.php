@@ -26,7 +26,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <!-- Validation Errors -->
                     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                    <form method="POST" action="{{ route('sanitarios.store') }}">
+                    <form method="GET" action="{{ route('sanitarios.store') }}">
                         @csrf
                         
 

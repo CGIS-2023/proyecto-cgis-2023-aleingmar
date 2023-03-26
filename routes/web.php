@@ -50,6 +50,8 @@ Route::resources([
 
 
     Route::get('/sanitarios_filtrar', [SanitarioController::class, 'filtrar_prueba'])->name('sanitarios.filtrar');
+    
+    //Route::get('/medicos/{medico}', [MedicoController::class, 'show'])->name('medicos.show');
 
 });
 
