@@ -70,7 +70,7 @@ public function filtrar_prueba(Request $request)
 
     // solo llegan hasta aqui los usuarios de direccion
     //filtro los enfermeros
-    $sanitarios_query = Sanitario::join('users', 'sanitarios.profesion_id', 'users.id')
+    $sanitarios_query = Sanitario::join('users', 'sanitarios.user_id', 'users.id')
         ->select('*');
         //->where('users.name', 'like', '%'.$buscarpor.'%')
 
@@ -79,7 +79,8 @@ public function filtrar_prueba(Request $request)
 
     if($request->input('buscarpor')){
         $buscarpor= $request->get('buscarpor');
-        $sanitarios_query = $sanitarios_query->where('users.name', 'like', '%$buscarpor%'); //se puede tambien con input
+        //para concatenar string se usan los puntos
+        $sanitarios_query = $sanitarios_query->where('users.name', 'like', '%'.$buscarpor.'%'); //se puede tambien con input
         
     }
 

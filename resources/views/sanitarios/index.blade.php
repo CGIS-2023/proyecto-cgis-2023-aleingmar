@@ -56,8 +56,8 @@
                 Auth::user()->sanitario->cargo->id == 3)
 
                     <form class="d-flex float-right" role="search" action="{{ route('sanitarios.filtrar') }}">
-                        <input name="buscarpor" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
-                        <button class="btn btn-success" type="submit">Search</button>
+                        <input name="buscarpor" class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search" >
+                        <button class="btn btn-success" type="submit">Buscar</button>
                     </form>
                 @endif
                 
