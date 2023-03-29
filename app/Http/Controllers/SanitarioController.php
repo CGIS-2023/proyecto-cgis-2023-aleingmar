@@ -98,6 +98,7 @@ public function filtrar_prueba(Request $request)
     {
         //
         // solo direccion
+        //genera casi sql usando ORM
         $cargos = Cargo::all();
         $profesiones = Profesion::all();
         return view('sanitarios/create', ['cargos' => $cargos, 'profesiones' => $profesiones]);
@@ -177,8 +178,8 @@ public function filtrar_prueba(Request $request)
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
             //'telefono' => 'required|integer|digits:9',
-            //'cargo_id' => 'required|exists:cargos,id',
-            //'profesion_id' => 'required|exists:profesions,id',
+            'cargo_id' => 'required|exists:cargos,id',
+            'profesion_id' => 'required|exists:profesions,id',
         ]);
 
        

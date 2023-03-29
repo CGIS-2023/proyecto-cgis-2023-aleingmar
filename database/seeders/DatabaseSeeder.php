@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             CargoSeeder::class,
             SanitarioSeeder::class,
             AccesoSeeder::class,
+            IncidenciaSeeder::class,
 
         ]);
     }

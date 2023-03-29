@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
+
+
+//cuando creamos los modelos con --all se crean un create y un update para cada clase
+//ESTO HACE LO MISMO
+
+
+
+
+
+
 class LoginRequest extends FormRequest
 {
     /**

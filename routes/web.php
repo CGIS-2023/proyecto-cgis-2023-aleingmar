@@ -14,7 +14,7 @@ use App\Http\Controllers\SanitarioController;
 |
 */
 
-
+//los middleware can asocian policies creo
 
 require __DIR__.'/auth.php'; //esto creo que es como si importara las rutas de auth
 
@@ -51,7 +51,6 @@ Route::resources([
 
     Route::get('/sanitarios_filtrar', [SanitarioController::class, 'filtrar_prueba'])->name('sanitarios.filtrar');
     
-    //Route::get('/medicos/{medico}', [MedicoController::class, 'show'])->name('medicos.show');
 
 });
 
