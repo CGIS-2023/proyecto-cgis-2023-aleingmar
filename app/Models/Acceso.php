@@ -22,6 +22,9 @@ class Acceso extends Model
     public function sanitario(){
         return $this->belongsTo(Sanitario::class);
     }
+    public function incidencias(){
+        return $this->hasMany(Incidencia::class);
+    }
     
 
     //NO FUNCIONA

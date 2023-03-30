@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccesoController;
 use App\Http\Controllers\SanitarioController;
+use App\Http\Controllers\IncidenciaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +43,7 @@ Route::resources([
     //'cargos' => CargoController::class,
     //'profesions' => ProfesionController::class,
     'sanitarios' => SanitarioController::class,
+    'incidencias'=> IncidenciaController::class,
     
 ]);
 

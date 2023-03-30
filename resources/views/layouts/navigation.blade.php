@@ -17,6 +17,9 @@
                             {{ __('Sanitarios') }}
                         </x-nav-link>
                         @endif
+                        <x-nav-link :href="route('incidencias.index')" :active="request()->routeIs('incidencias.index') or request()->routeIs('incidencias.create') or request()->routeIs('incidencias.edit') or request()->routeIs('incidencias.show')">
+                            {{ __('Mis incidencias') }}
+                        </x-nav-link>
                         
                         
 

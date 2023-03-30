@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreIncidenciaRequest;
-use App\Http\Requests\UpdateIncidenciaRequest;
+/* use App\Http\Requests\StoreIncidenciaRequest;
+use App\Http\Requests\UpdateIncidenciaRequest; */
 use App\Models\Incidencia;
+use App\Models\Acceso;
+use App\Models\Sanitario;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class IncidenciaController extends Controller
 {
@@ -16,6 +22,9 @@ class IncidenciaController extends Controller
     public function index()
     {
         //
+        $incidencias = Incidencia::orderBy('fechaPresentacion', 'desc')->paginate(25);
+        return view('/incidencias/index', ['incidencias' => $incidencias]);
+
     }
 
     /**

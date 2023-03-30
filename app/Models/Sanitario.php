@@ -28,6 +28,10 @@ class Sanitario extends Model
     public function accesos(){
         return $this->hasMany(Acceso::class);
     }
+
+    public function incidencias(){
+        return $this->hasMany(Incidencia::class);
+    }
     
     public function cargo(){
         return $this->belongsTo(Cargo::class);

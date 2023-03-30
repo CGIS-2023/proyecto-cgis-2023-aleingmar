@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+//use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class IncidenciaSeeder extends Seeder
 {
@@ -15,17 +16,15 @@ class IncidenciaSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('profesions')->insert([
+        DB::table('incidencias')->insert([
             [ // 1
                 'acceso_id' => 1,
                 'sanitario_id'=>1,
-                'fechaAceptacion'=>
-                'fechaRechazo'=>
-                'motivoPresentacion'
-                'motivoRespuesta'=
-
-
-
+                'fechaPresentacion'=> '2021-05-29 04:15:00', 
+                'fechaAceptacion'=> '2021-05-30 07:15:00',
+                'fechaRechazo'=> Null,
+                'motivoPresentacion'=> 'Entré a las xxx',
+                'motivoRespuesta'=> Null,
             ],
             
            

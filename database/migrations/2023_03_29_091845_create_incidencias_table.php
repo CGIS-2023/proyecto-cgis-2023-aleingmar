@@ -1,9 +1,9 @@
 <?php
 
-namespace Database\Seeders;
-use Illuminate\Support\Facades\DB;
-//use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
 
 class CreateIncidenciasTable extends Migration
 {
@@ -17,10 +17,13 @@ class CreateIncidenciasTable extends Migration
         Schema::create('incidencias', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('acceso_id')->nullable()->constrained()->onDelete('set null');
-            //si borro una incidencia no se borra el acceso al que hace referencia
-            $table->foreignId('sanitario_id')->unique()->constrained()->onDelete('set null');
+            //si borro un acceso se borran sus incidencias
+            $table->foreignId('acceso_id')->nullable()->constrained()->onDelete('cascade');
+            //si borro un sanitario borro la incidencia  no se borra el acceso al que hace referencia
+            $table->foreignId('sanitario_id')->unique()->constrained()->onDelete('cascade');
             /////////////////
+            
+            $table->dateTime('fechaPresentacion');
             $table->dateTime('fechaAceptacion')->nullable();
             $table->dateTime('fechaRechazo')->nullable();
             $table->string('motivoPresentacion')->nullable();
