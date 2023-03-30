@@ -104,7 +104,9 @@
                         </div>
 
 <!-- /////////////////////////////////////////////////////////////////////////////// -->
-                        @if( $incidencia->motivoRespuesta != Null)
+<!-- ISEET ES LO MISMO QUE PONER ESTO: if( $incidencia->motivoRespuesta != Null) t -->
+
+                        @isset($motivoRespuesta)
                         <div class="mt-4">
                             <x-label for="motivoRespuesta" :value="__('Motivo Respuesta')" />
 
@@ -126,7 +128,7 @@
                                 />
 
                         </div>
-                        @endif
+                        @endisset
 
 <!-- /////////////////////////////////////////////////////////////////////////////// -->
 
