@@ -120,6 +120,38 @@
                                         </div>
                                         @endif
 
+
+                            <!-- PRUEBA CON EL CHECK -->
+                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
+                            
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <a href="{{route('incidencias.edit', $incidencia->id)}}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        @endif
+                            <!-- PRUEBA CON EL CHECK -->
+
+
+                            <!-- PRUEBA CON EL rechazo -->
+                            @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
+                            
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <a href="{{route('incidencias.edit', $incidencia->id)}}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        @endif
+                            <!-- PRUEBA CON EL rechazo -->
+
+
+
+
+
                                         @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <form id="delete-form-{{$incidencia->id}}" method="POST" action="{{ route('incidencias.destroy', $incidencia->id) }}">
