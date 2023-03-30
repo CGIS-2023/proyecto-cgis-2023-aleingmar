@@ -56,7 +56,8 @@ class IncidenciaController extends Controller
      */
     public function show(Incidencia $incidencia)
     {
-        //
+        
+        return view('incidencias/show', ['incidencia' => $incidencia,]); //'cargos' => $cargos, 'profesiones' => $profesiones]);
     }
 
     /**

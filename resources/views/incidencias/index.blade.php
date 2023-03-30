@@ -152,7 +152,7 @@
 
 
 
-                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
+                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 4 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 3 )
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <form id="delete-form-{{$incidencia->id}}" method="POST" action="{{ route('incidencias.destroy', $incidencia->id) }}">
                                                 @csrf
