@@ -64,9 +64,6 @@
 
 
 
-                        
-                        
-
                         <div class="mt-4">
                             <x-label for="fechaPresentacion" :value="__('Fecha y hora de Presentacion')" />
 
@@ -105,8 +102,8 @@
 
 <!-- /////////////////////////////////////////////////////////////////////////////// -->
 <!-- ISEET ES LO MISMO QUE PONER ESTO: if( $incidencia->motivoRespuesta != Null) t -->
-
-                        @isset($motivoRespuesta)
+                        <!-- funciona igual si pongo $motivoRespuesta -->
+                        @isset($incidencia->motivoRespuesta)
                         <div class="mt-4">
                             <x-label for="motivoRespuesta" :value="__('Motivo Respuesta')" />
 
