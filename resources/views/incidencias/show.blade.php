@@ -82,12 +82,12 @@
 
 
                         <div class="mt-4">
-                            <x-label for="motivoPresentacion" :value="__('Motivo Presentacion')" />
+                            <x-label for="motivoIncidencia" :value="__('Motivo Presentacion')" />
 
                                 <x-input class="block mt-1 w-full"
                                          type="text"
                                          disabled
-                                         value="{{$incidencia->motivoPresentacion}}"
+                                         value="{{$incidencia->motivoIncidencia}}"
                                 />
 
                         </div>

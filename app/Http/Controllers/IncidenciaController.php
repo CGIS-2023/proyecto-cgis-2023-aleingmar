@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 /* use App\Http\Requests\StoreIncidenciaRequest;
 use App\Http\Requests\UpdateIncidenciaRequest; */
 use App\Models\Incidencia;
-use App\Models\Acceso;
+
 use App\Models\Sanitario;
+use App\Models\Acceso;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,13 @@ class IncidenciaController extends Controller
     public function create()
     {
         //
+        $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
+            ->select('accesos.*')
+            ->where('sanitarios.id', Auth::user()->sanitario->id)
+            ->orderBy('accesos.entrada', 'desc');
+      
+
+        return view('incidencias/create', ['accesos' => $accesos, ]);
     }
 
     /**
@@ -43,9 +51,36 @@ class IncidenciaController extends Controller
      * @param  \App\Http\Requests\StoreIncidenciaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreIncidenciaRequest $request)
+    public function store(Request $request)
     {
         //
+        $reglas = [
+            'motivoIncidencia' => 'required|string|max:255', //creo que no se puede meter datetime como regla en el validate
+            'sanitario_id'=> 'required|exists:sanitarios,id',
+            'acceso_id'=> 'required|exists:accesos,id'
+        ];
+
+        $this->validate($request, $reglas);
+
+        $motivoIncidencia= $request->motivoIncidencia;
+
+        
+
+        $incidencias = new incidencia([ // 1
+            'acceso_id' => 1,
+            'sanitario_id'=>1,
+            'fechaPresentacion'=> '2021-05-29 04:15:00', 
+            'fechaAceptacion'=> '2021-05-30 07:15:00',
+            'fechaRechazo'=> Null,
+            'motivoIncidencia'=> $motivoIncidencia,
+            'motivoRespuesta'=> Null,
+        ],
+    );
+
+
+        $incidencias->save();
+        session()->flash('success', 'incidencia creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        return redirect()->route('incidencias.index');
     }
 
     /**

@@ -13,7 +13,7 @@ class Incidencia extends Model
     //'fechaAceptacion', 'fechaRechazo',y fechaPresentacion NO SE PONEN EN EL FILLABLE pk no lo tienen que ppner en el formulario
 
     protected $fillable = ['acceso_id', 'sanitario_id', 
-    'motivoPresentacion', 'motivoRespuesta'];
+    'motivoIncidencia', 'motivoRespuesta'];
     
     //aunque no esten en el fillable hay que ponerlos en el cast ya que por ej en los seeder se mete un string con ese formato--> hay que pasarlo a date
     protected $casts = [

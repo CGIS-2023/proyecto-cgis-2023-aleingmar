@@ -23,7 +23,7 @@ class IncidenciaSeeder extends Seeder
                 'fechaPresentacion'=> '2021-05-29 04:15:00', 
                 'fechaAceptacion'=> '2021-05-30 07:15:00',
                 'fechaRechazo'=> Null,
-                'motivoPresentacion'=> 'Entré a las xxx',
+                'motivoIncidencia'=> 'Entré a las xxx',
                 'motivoRespuesta'=> Null,
             ],
             

@@ -26,7 +26,7 @@ class CreateIncidenciasTable extends Migration
             $table->dateTime('fechaPresentacion');
             $table->dateTime('fechaAceptacion')->nullable();
             $table->dateTime('fechaRechazo')->nullable();
-            $table->string('motivoPresentacion')->nullable();
+            $table->string('motivoIncidencia')->nullable();
             $table->string('motivoRespuesta')->nullable();
 
         });

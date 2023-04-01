@@ -12,7 +12,7 @@
 
             <!-- solo lo pueden crear el admin y la direccion -->
 
-            @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 4 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 3 )
+            @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 4 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 3 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                 <div class="flex items-center mt-4 ml-2">
                     <form method="GET" action="{{ route('incidencias.create') }}">
                         <x-button type="subit" class="ml-4">
