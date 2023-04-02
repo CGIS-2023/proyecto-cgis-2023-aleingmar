@@ -90,11 +90,20 @@
                                     </div>
                                 </td>
                                 
+                                <!-- quiero que si existe la fecha de respuesta me salga, y si todavía no ha habido respuesta que no me salga -->
+                               
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{$incidencia->getFechaRespuestaAttribute()->format('d/m/Y H:i')}}</span>
+                                        <!-- si no se ha respondido la fecah esta en null y da problemas -->
+                                        <span class="font-medium" @if($incidencia->getFechaRespuestaAttribute()!= Null) 
+                                            >{{$incidencia->getFechaRespuestaAttribute()->format('d/m/Y H:i')}}
+                                            @else
+                                            >En trámite
+                                            @endif 
+                                        </span>
                                     </div>
                                 </td>
+                                
                                 
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-end">
@@ -107,9 +116,9 @@
                                             </a>
                                         </div>
 
-                                        <!-- solo lo pueden borrar y modificar el admin y la direccion -->
+                                        <!-- modificar el prof normales y jefes de guardia-->
 
-                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
+                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 3 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 4 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                             
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a href="{{route('incidencias.edit', $incidencia->id)}}">

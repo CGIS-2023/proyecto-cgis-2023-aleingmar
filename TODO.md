@@ -13,13 +13,10 @@ cambiar filtros --> https://www.google.com/search?q=check+if+request+laravel+inp
 
 2/////
 
+OBJETIVO: hacer un perfil de edit distinto para los medicos normales (esta hecho) y despues uno especial
+para los de direccion y admin (editan para poner los datos de aceptar o no aceptar la incidencia)
 
-HACER LOS PERMISOS
-
-Recortar alomejor posibles usuarios
-mirar formularios de las diapos de html
-POLICIES
-mejorar los filtros
+ADEMAS arreglar que se pueda acceder desde los botones de la exclamacion y de la cruz y el tick que se pueda enviar info
 
 
 

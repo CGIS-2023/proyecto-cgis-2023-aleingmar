@@ -35,53 +35,30 @@
                         @method('put')
 
                         <div class="mt-4">
-                            <x-label for="sanitario_id" :value="__('sanitario')" />
+                            <x-label for="acceso_id" :value="__('Acceso')" />
 
-                            @isset($sanitario)
-                                <x-input id="sanitario_id" class="block mt-1 w-full"
-                                         type="hidden"
-                                         name="sanitario_id"
-                                         :value="$sanitario->id"
-                                         required />
-                                <x-input class="block mt-1 w-full"
-                                         type="text"
-                                         disabled
-                                         value="{{$sanitario->user->name}} (ID: {{$sanitario->id}})"
-                                />
-                            @else
-                                <x-select id="sanitario_id" name="sanitario_id" required>
-                                    <option value="">{{__('Elige un sanitario')}}</option>
-                                    @foreach ($sanitarios as $sanitario)
-                                        <option value="{{$sanitario->id}}" @if ($incidencia->sanitario_id == $sanitario->id) selected @endif>{{$sanitario->user->name}} (ID :{{$sanitario->id}})</option>
+                
+                            <x-select id="acceso_id" name="acceso_id" required>
+                                    <option value="">{{__('Elige una opción')}}</option>
+                                    <option value= {{Null}}>{{__('Falta de acceso')}}</option>
+                                    @foreach ($accesos as $acceso)
+
+                                    <!-- explicacion: si coincide en el selected el id del acceso que recorro con el foreach con el de la incidencia que he clickado -->
+
+                                    <option value="{{$acceso->id}}" @if ($acceso->id == $incidencia->acceso_id) selected 
+                                        @endif>Entrada: {{$acceso->entrada->format('d/m/Y H:i')}} (ID: {{$acceso->id}})</option>
+                                    
                                     @endforeach
                                 </x-select>
-                            @endisset
                         </div>
                         
 
-                        <div class="mt-4">
-                            <x-label for="entrada" :value="__('Fecha y hora de entrada')" />
+                      
+                        <div>
+                                <x-label for="motivoIncidencia" :value="__('Motivo de la Incidencia')" />
 
-                            <x-input id="entrada" class="block mt-1 w-full"
-                                     type="datetime-local"
-                                     name="entrada"
-                                     
-                                     :value="$incidencia->entrada->format('Y-m-d\TH:i:s')"
-                                     required />
-                        </div>
-
-                        
-                        <div class="mt-4">
-                            <x-label for="salida" :value="__('Fecha y hora de salida')" />
-
-                            <x-input id="salida" class="block mt-1 w-full"
-                                     type="datetime-local"
-                                     name="salida"
-                                     
-                                     :value="$incidencia->salida->format('Y-m-d\TH:i:s')"
-                                     required />
-                        </div>
-
+                                <x-input id="motivoIncidencia" class="block mt-1 w-full" type="text" name="motivoIncidencia"  required autofocus />
+                            </div>
 
 
                         <div class="flex items-center justify-end mt-4">

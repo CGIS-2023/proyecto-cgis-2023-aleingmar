@@ -36,8 +36,10 @@
 
                                 <x-select id="acceso_id" name="acceso_id" required>
                                     <option value="">{{__('Elige una opción')}}</option>
+                                    <option value= {{Null}}>{{__('Falta de acceso')}}</option>
                                     @foreach ($accesos as $acceso)
-                                    <option value="{{$acceso->id}}" @if (old('acceso_id') == $acceso->id) selected @endif>{{$acceso->entrada}}</option>
+                                    <option value="{{$acceso->id}}">Entrada: {{$acceso->entrada->format('d/m/Y H:i')}} (ID: {{$acceso->id}})</option>
+                                    
                                     @endforeach
                                 </x-select>
                             </div>

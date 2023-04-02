@@ -40,16 +40,31 @@
 
                         </div>
 
+                        @isset($incidencia->acceso)
                         <div class="mt-4">
                             <x-label for="acceso_id" :value="__('ID Acceso__Fecha y hora Entrada')" />
 
+                                <!-- si la incidencia no hace referencia a un acceso gestionamos asi-->
                                 <x-input class="block mt-1 w-full"
                                          type="text"
-                                         disabled
-                                         value="ID: {{$incidencia->acceso->id}} Entrada: {{$incidencia->acceso->entrada}}"
+                                         disabled   
+                                         value="ID: {{$incidencia->acceso->id}} Entrada: {{$incidencia->acceso->entrada}}"                 
                                 />
-
+                                
                         </div>
+                        @else
+                        <div class="mt-4">
+                            <x-label for="acceso_id" :value="__('ID Acceso__Fecha y hora Entrada')" />
+
+                                <!-- si la incidencia no hace referencia a un acceso gestionamos asi-->
+                                <x-input class="block mt-1 w-full"
+                                         type="text"
+                                         disabled   
+                                         value="Falta el acceso"                 
+                                />
+                                
+                        </div>
+                        @endisset
 
                         <div class="mt-4">
                             <x-label for="estado" :value="__('Estado Incidencia')" />
@@ -63,7 +78,7 @@
                         </div>
 
 
-
+                        
                         <div class="mt-4">
                             <x-label for="fechaPresentacion" :value="__('Fecha y hora de Presentacion')" />
 
@@ -74,7 +89,7 @@
                                      :value="$incidencia->fechaPresentacion->format('Y-m-d\TH:i:s')"
                                      required />
                         </div>
-
+                        
 
 
 
@@ -89,6 +104,9 @@
 
                         </div>
 
+                        
+                        <!-- Aqui hemos quitado directamente el campo -->
+                        @isset($incidencia->fechaRespuesta)
                         <div class="mt-4">
                             <x-label for="fechaRespuesta" :value="__('Fecha y hora de Respuesta')" />
 
@@ -99,6 +117,9 @@
                                      :value="$incidencia->getFechaRespuestaAttribute()->format('Y-m-d\TH:i:s')"
                                      required />
                         </div>
+                        @endisset
+
+
 
 <!-- /////////////////////////////////////////////////////////////////////////////// -->
 <!-- ISEET ES LO MISMO QUE PONER ESTO: if( $incidencia->motivoRespuesta != Null) t -->
@@ -121,7 +142,7 @@
                                 <x-input class="block mt-1 w-full"
                                          type="text"
                                          disabled
-                                         value="No hay motivo"
+                                         value="En trámite"
                                 />
 
                         </div>

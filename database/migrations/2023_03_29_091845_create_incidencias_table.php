@@ -20,10 +20,11 @@ class CreateIncidenciasTable extends Migration
             //si borro un acceso se borran sus incidencias
             $table->foreignId('acceso_id')->nullable()->constrained()->onDelete('cascade');
             //si borro un sanitario borro la incidencia  no se borra el acceso al que hace referencia
-            $table->foreignId('sanitario_id')->unique()->constrained()->onDelete('cascade');
+            //unique significa que solo puede haber una incidencia por ejemplo con un solo sanitario_id
+            $table->foreignId('sanitario_id')->constrained()->onDelete('cascade');
             /////////////////
             
-            $table->dateTime('fechaPresentacion');
+            $table->dateTime('fechaPresentacion')->nullable();
             $table->dateTime('fechaAceptacion')->nullable();
             $table->dateTime('fechaRechazo')->nullable();
             $table->string('motivoIncidencia')->nullable();
