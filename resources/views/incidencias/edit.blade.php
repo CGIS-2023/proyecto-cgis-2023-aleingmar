@@ -34,6 +34,10 @@
                         @csrf
                         @method('put')
 
+
+                        <!-- ///////////////////////esto es el formulario de edicion de los normales y jefes de guard /////////////////-->
+
+                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 3 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 4 )
                         <div class="mt-4">
                             <x-label for="acceso_id" :value="__('Acceso')" />
 
@@ -53,13 +57,43 @@
                         </div>
                         
 
-                      
-                        <div>
+                        <!-- ese mt-4 le da mas separacion -->
+                        <div class="mt-4">
                                 <x-label for="motivoIncidencia" :value="__('Motivo de la Incidencia')" />
 
                                 <x-input id="motivoIncidencia" class="block mt-1 w-full" type="text" name="motivoIncidencia"  required autofocus />
-                            </div>
+                        </div>
+                        @endif
 
+
+
+
+
+
+            <!-- ///////////////////////esto es el formulario de edicion de los normales y jefes de guard /////////////////-->
+
+
+            @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 )
+
+                        <!-- Value es lo que manda en el request -->
+                    <!-- En este ejemplo, ambos botones de radio tienen el mismo atributo name, lo que significa que solo se puede seleccionar  -->
+                   <!--  uno a la vez. Cuando un botón de radio se selecciona, el valor asociado se envía al servidor como parte del formulario. -->
+                            <!-- si se pudiera clickar dos a la vez es tipo checkbox si no es radio -->
+                        <div class="mt-4">
+                        <x-input type="radio" name="decision" value="Aceptada"/>
+                        Aceptada
+                        <x-input type="radio" name="decision" value="Rechazada"/>
+                        Rechazada        
+                        </div>
+
+                        <div class="mt-4">
+                                <x-label for="motivoRespuesta" :value="__('Motivo de la Respuesta')" />
+
+                                <x-input id="motivoRespuesta" class="block mt-1 w-full" type="text" name="motivoRespuesta"  required autofocus />
+                        </div>
+
+
+            @endif
 
                         <div class="flex items-center justify-end mt-4">
                             <x-button type="button" class="bg-red-800 hover:bg-red-700">

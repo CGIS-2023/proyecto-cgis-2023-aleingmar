@@ -93,16 +93,24 @@ class IncidenciaController extends Controller
 
     public function edit(Incidencia $incidencia)
     {
+
+
+        
+        //si soy admin o de direccion
+        $res= view('incidencias/edit', ['incidencia'=> $incidencia]);
+
         // este es el edit para los profesionales normales y los jefes de guardia
 
-
-        $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
-        ->select('accesos.*')
-        ->where('sanitarios.id', Auth::user()->sanitario->id)
-        ->orderBy('accesos.entrada', 'desc')->paginate(25);
-
-
-        return view('incidencias/edit', ['accesos' => $accesos, 'incidencia'=> $incidencia]);
+        if(Auth::user()->sanitario->cargo->id == 4 || Auth::user()->sanitario->cargo->id == 3){
+            $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
+            ->select('accesos.*')
+            ->where('sanitarios.id', Auth::user()->sanitario->id)
+            ->orderBy('accesos.entrada', 'desc')->paginate(25);
+            $res= view('incidencias/edit', ['accesos' => $accesos, 'incidencia'=> $incidencia]);
+            }
+        
+            return $res;
+        
     }
 
 
@@ -112,6 +120,8 @@ class IncidenciaController extends Controller
     public function update(Request $request, Incidencia $incidencia)
     {
        
+        if(Auth::user()->sanitario->cargo->id == 4 || Auth::user()->sanitario->cargo->id == 3){
+
         $this->validate($request, [
             'motivoIncidencia' => 'required|string|max:255', //creo que no se puede meter datetime como regla en el validate
             //'sanitario_id'=> 'required|exists:sanitarios,id',
@@ -124,8 +134,36 @@ class IncidenciaController extends Controller
         $incidencia->motivoIncidencia= $request->motivoIncidencia;
         $incidencia->acceso_id= $request->acceso_id;
 
+        }
+        
+        //si soy de direccion o admin puedo aprobar o denegar
 
-        session()->flash('success', 'Personal Sanitario creado correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+        if(Auth::user()->sanitario->cargo->id == 1 || Auth::user()->sanitario->cargo->id == 2){
+
+            $this->validate($request, [
+                'motivoRespuesta' => 'string|max:255', //creo que no se puede meter datetime como regla en el validate
+                'decision' => 'required'
+            ]);
+            //si existe valor en el input de nombre decision:
+
+            //se podria hacer asi
+            $decision= $request->get('decision');
+            // o asi --> $decision= $request->decision
+            
+            if($decision== "Aceptada"){
+                $incidencia->fechaAceptacion= Carbon::now(); 
+            }else{
+                $incidencia->fechaRechazo= Carbon::now(); 
+            }
+                 
+            
+
+            $incidencia->motivoRespuesta= $request->motivoRespuesta;
+
+        }
+
+        $incidencia->save();
+        session()->flash('success', 'Incidencia creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
         return redirect()->route('incidencias.index');
 
 

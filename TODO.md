@@ -18,7 +18,7 @@ para los de direccion y admin (editan para poner los datos de aceptar o no acept
 
 ADEMAS arreglar que se pueda acceder desde los botones de la exclamacion y de la cruz y el tick que se pueda enviar info
 
-
+no se ponen bien la fecha respuesta, parece que no funciona bien el carbon::now(),
 
 PREGUNTAS:
 

@@ -11,7 +11,7 @@ class Incidencia extends Model
     use HasFactory;
 
     //'fechaAceptacion', 'fechaRechazo',y fechaPresentacion NO SE PONEN EN EL FILLABLE pk no lo tienen que ppner en el formulario
-
+    //NO LO USO EN EL CONTROLADOR
     protected $fillable = ['acceso_id', 'sanitario_id', 
     'motivoIncidencia', 'motivoRespuesta'];
     
