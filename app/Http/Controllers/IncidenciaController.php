@@ -37,11 +37,17 @@ class IncidenciaController extends Controller
 
     }
 
-    public function create()
+    public function create(Request $request)
     {
         // solo van a poder crear incidencias --> jefes y sanitarios (a nv personal)
 
-        
+        if($request->input('exclamacion')){
+            $acceso= $request->get('exclamacion');
+            
+            return view('incidencias/create', ['acceso' => $acceso, ]);
+        }
+
+
         $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
         ->select('accesos.*')
         ->where('sanitarios.id', Auth::user()->sanitario->id)
@@ -112,8 +118,44 @@ class IncidenciaController extends Controller
             return $res;
         
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public function aceptarIncidencia(Incidencia $incidencia)
+    {
 
+    //metodo que sireve para que los de direccion y admin respondan a las incidencias
+    $respuestaPredeterminada= "Buenas " . $incidencia->sanitario->user->name . ". Tras revisarlo estamos de acuerdo con tu solicitud. Ha sido aceptada";
+    return view('incidencias/showAceptar', ['incidencia'=> $incidencia, 'respuestaPredeterminada'=>$respuestaPredeterminada]);
 
+        
+    }
+    public function updateAceptar(Incidencia $incidencia, Request $request)
+    {
+        $this->validate($request, [
+            'motivoRespuesta' => 'string|max:255', //creo que no se puede meter datetime como regla en el validate
+
+        ]);
+            $incidencia->fechaAceptacion= Carbon::now(); 
+
+    $incidencia->motivoRespuesta= $request->motivoRespuesta;
+
+    $incidencia->save();
+    session()->flash('success', 'Incidencia creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+    return redirect()->route('incidencias.index');
+    }
+
+    
+    public function rechazarIncidencia(Incidencia $incidencia, Request $request)
+    {
+
+    //metodo que sireve para que los de direccion y admin respondan a las incidencias
+    return view('incidencias/showRechazar', ['incidencia'=> $incidencia]);
+    }
+
+    public function updateRechazae(Incidencia $incidencia, Request $request)
+    {
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

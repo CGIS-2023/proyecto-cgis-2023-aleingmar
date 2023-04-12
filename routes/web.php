@@ -52,7 +52,10 @@ Route::resources([
 
 
     Route::get('/sanitarios_filtrar', [SanitarioController::class, 'filtrar_prueba'])->name('sanitarios.filtrar');
-    
+
+    //
+    Route::get('/incidencias/{incidencia}/aceptarIncidencia', [IncidenciaController::class, 'aceptarIncidencia'])->name('incidencias.showAceptar');
+    Route::put('/incidencias/{incidencia}/aceptarIncidencia', [IncidenciaController::class, 'updateAceptar'])->name('incidencias.updateAceptar');
 
 });
 
