@@ -55,7 +55,7 @@ class AccesoPolicy
     
     public function update(User $user, Acceso $acceso)
     {
-        //
+        //editar un acceso
         return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) );
     }
 

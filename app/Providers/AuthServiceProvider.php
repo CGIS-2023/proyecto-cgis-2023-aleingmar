@@ -24,7 +24,8 @@ class AuthServiceProvider extends ServiceProvider
         Acceso::class => AccesoPolicy::class,
         Sanitario::class => SanitarioPolicy::class,
         Cargo::class => CargoPolicy::class,
-        Profesion::class => ProfesionPolicy::class
+        Profesion::class => ProfesionPolicy::class,
+        Incidencia::class => IncidenciaPolicy::class,
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
