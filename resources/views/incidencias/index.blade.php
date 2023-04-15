@@ -129,6 +129,10 @@
                                         </div>
                                         @endif
 
+                <!-- solo quiero que aparezcan los botones si estan en trámite -->
+
+                @if ($incidencia->estado == 'En trámite')
+
                             <!-- PRUEBA CON EL MAS -->
                             @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                             
@@ -142,6 +146,7 @@
                             @endif
                 <!-- PRUEBA CON EL MAS -->
 
+                
                             <!-- PRUEBA CON EL CHECK -->
                                         @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                             
@@ -155,13 +160,13 @@
                                         @endif
                             <!-- PRUEBA CON EL CHECK -->
                            
-
+               
 
                             <!-- PRUEBA CON EL rechazo -->
                             @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
                             
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <a href="{{route('incidencias.edit', $incidencia->id)}}">
+                                            <a href="{{route('incidencias.showRechazar', $incidencia->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                                                 </svg>
@@ -172,7 +177,7 @@
 
 
 
-
+                            @endif
 
                                         @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 4 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 3 )
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">

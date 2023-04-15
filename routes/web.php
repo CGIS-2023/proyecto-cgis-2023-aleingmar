@@ -53,9 +53,18 @@ Route::resources([
 
     Route::get('/sanitarios_filtrar', [SanitarioController::class, 'filtrar_prueba'])->name('sanitarios.filtrar');
 
-    //
+    //El método POST se utiliza para enviar una entidad a un recurso en específico, causando a menudo un cambio en 
+    //el estado o efectos secundarios en el servidor.
+    // El modo PUT reemplaza todas las representaciones actuales del recurso de destino con la carga útil de la petición.
+    //AQUI SE ACTUALIZA TODA LA INFORMACION del recurso incidencia
     Route::get('/incidencias/{incidencia}/aceptarIncidencia', [IncidenciaController::class, 'aceptarIncidencia'])->name('incidencias.showAceptar');
     Route::put('/incidencias/{incidencia}/aceptarIncidencia', [IncidenciaController::class, 'updateAceptar'])->name('incidencias.updateAceptar');
+
+
+    Route::get('/incidencias/{incidencia}/rechazarIncidencia', [IncidenciaController::class, 'rechazarIncidencia'])->name('incidencias.showRechazar');
+    Route::put('/incidencias/{incidencia}/rechazarIncidencia', [IncidenciaController::class, 'updateRechazar'])->name('incidencias.updateRechazar');
+
+
 
 });
 

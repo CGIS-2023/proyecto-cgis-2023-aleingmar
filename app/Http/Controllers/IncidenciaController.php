@@ -118,44 +118,7 @@ class IncidenciaController extends Controller
             return $res;
         
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function aceptarIncidencia(Incidencia $incidencia)
-    {
 
-    //metodo que sireve para que los de direccion y admin respondan a las incidencias
-    $respuestaPredeterminada= "Buenas " . $incidencia->sanitario->user->name . ". Tras revisarlo estamos de acuerdo con tu solicitud. Ha sido aceptada";
-    return view('incidencias/showAceptar', ['incidencia'=> $incidencia, 'respuestaPredeterminada'=>$respuestaPredeterminada]);
-
-        
-    }
-    public function updateAceptar(Incidencia $incidencia, Request $request)
-    {
-        $this->validate($request, [
-            'motivoRespuesta' => 'string|max:255', //creo que no se puede meter datetime como regla en el validate
-
-        ]);
-            $incidencia->fechaAceptacion= Carbon::now(); 
-
-    $incidencia->motivoRespuesta= $request->motivoRespuesta;
-
-    $incidencia->save();
-    session()->flash('success', 'Incidencia creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
-    return redirect()->route('incidencias.index');
-    }
-
-    
-    public function rechazarIncidencia(Incidencia $incidencia, Request $request)
-    {
-
-    //metodo que sireve para que los de direccion y admin respondan a las incidencias
-    return view('incidencias/showRechazar', ['incidencia'=> $incidencia]);
-    }
-
-    public function updateRechazae(Incidencia $incidencia, Request $request)
-    {
-    }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -235,4 +198,57 @@ class IncidenciaController extends Controller
         }
         return redirect()->route('incidencias.index');
     }
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public function aceptarIncidencia(Incidencia $incidencia)
+{
+
+//metodo que sireve para que los de direccion y admin respondan a las incidencias
+$respuestaPredeterminada= "Buenas " . $incidencia->sanitario->user->name . ". Tras revisarlo estamos de acuerdo con tu solicitud. Ha sido aceptada";
+return view('incidencias/showAceptar', ['incidencia'=> $incidencia, 'respuestaPredeterminada'=>$respuestaPredeterminada]);
+
+    
+}
+public function updateAceptar(Incidencia $incidencia, Request $request)
+{
+    $this->validate($request, [
+        'motivoRespuesta' => 'string|max:255', //creo que no se puede meter datetime como regla en el validate
+
+    ]);
+        $incidencia->fechaAceptacion= Carbon::now(); 
+
+$incidencia->motivoRespuesta= $request->motivoRespuesta;
+
+$incidencia->save();
+session()->flash('success', 'Incidencia creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+return redirect()->route('incidencias.index');
+}
+
+
+public function rechazarIncidencia(Incidencia $incidencia)
+{
+    $respuestaPredeterminada= "Buenas " . $incidencia->sanitario->user->name . ". Tras revisarlo detenidamente NO estamos de acuerdo con tu solicitud. Ha sido rechazada.";
+//metodo que sireve para que los de direccion y admin respondan a las incidencias
+return view('incidencias/showRechazar', ['incidencia'=> $incidencia, 'respuestaPredeterminada'=>$respuestaPredeterminada]);
+}
+
+public function updateRechazar(Incidencia $incidencia, Request $request)
+{
+    $this->validate($request, [
+        'motivoRespuesta' => 'string|max:255', //creo que no se puede meter datetime como regla en el validate
+
+    ]);
+
+$incidencia->fechaRechazo= Carbon::now(); 
+
+$incidencia->motivoRespuesta= $request->motivoRespuesta;
+
+$incidencia->save();
+session()->flash('success', 'Incidencia creada correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
+return redirect()->route('incidencias.index');
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
