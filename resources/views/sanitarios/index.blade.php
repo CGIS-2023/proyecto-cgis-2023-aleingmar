@@ -75,6 +75,8 @@
 
                             <th class="py-3 px-6 text-left">Profesion</th>
 
+                            <!-- <th class="py-3 px-6 text-left">Especialidad</th> -->
+
                             <th class="py-3 px-6 text-left">Correo</th>
 
                             
