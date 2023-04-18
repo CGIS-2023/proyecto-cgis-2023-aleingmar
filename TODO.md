@@ -6,17 +6,18 @@ OBJETIVOS:
 
 METER TODO EN EL INDEX PERO HACER FUNCIONES QUE HACEN LOS FILTROS Y QUE SE  LLAMEN DESDE EL INDEX
 
-propiedad derivada estado ---> cambiar la documentacion (si tiene respuesta) calcular esa propiedad
+
 
 cambiar filtros --> https://www.google.com/search?q=check+if+request+laravel+input&rlz=1C1CHBF_esES918ES918&oq=check+if+request+laravel+input&aqs=chrome..69i57j0i22i30l3.9135j0j7&sourceid=chrome&ie=UTF-8
 
 
 2/////
 
-OBJETIVO: hacer un perfil de edit distinto para los medicos normales (esta hecho) y despues uno especial
-para los de direccion y admin (editan para poner los datos de aceptar o no aceptar la incidencia)
+//No funciona especialidades, intento en el index de sanitario poner un count de especialidaes y no funciona--> ARREGLAR
+Tocar sanitario e integrar especialidad
+MIdleware can para especialidad y para los metodos que salen del CRUD de incidencias
 
-ADEMAS arreglar que se pueda acceder desde los botones de la exclamacion y de la cruz y el tick que se pueda enviar info
+
 
 no se ponen bien la fecha respuesta, parece que no funciona bien el carbon::now(),
 
