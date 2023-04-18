@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             SanitarioSeeder::class,
             AccesoSeeder::class,
             IncidenciaSeeder::class,
+            EspecialidadSeeder::class,
 
         ]);
     }
