@@ -28,5 +28,18 @@ class EspecialidadSeeder extends Seeder
                 'nombre' => "Dermatología",
             ],
         ]);
+
+        //seeder tabla intermedia entre medicamento y especialidad
+
+        
+        DB::table('sanitario_especialidad')->insert([
+            [
+                'sanitario_id' => 2,
+                'especialidad_id' => 1,
+                'fechaInicio' => '2021-05-31',
+                'fechaFin' => '2021-06-07',
+            ],
+            
+        ]);
     }
 }

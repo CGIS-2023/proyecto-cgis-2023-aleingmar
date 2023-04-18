@@ -9,11 +9,11 @@ class CreateSanitarioEspecialidadTable extends Migration
 
     public function up()
     {
-        Schema::create('sanitario__especialidad', function (Blueprint $table) {
+        Schema::create('sanitario_especialidad', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->date('fechaInicio');
-            $table->date('fechaFin');
+            $table->date('fechaInicio')->nullable();
+            $table->date('fechaFin')->nullable();
             $table->foreignId('especialidad_id')->constrained()->onDelete('cascade');
             $table->foreignId('sanitario_id')->constrained()->onDelete('cascade');
         });
