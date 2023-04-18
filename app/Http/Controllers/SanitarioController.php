@@ -159,9 +159,11 @@ public function filtrar_prueba(Request $request)
     public function edit(Sanitario $sanitario)
     {
         //
+        $especialidades= Especialidad::all();
         $cargos = Cargo::all();
         $profesiones = Profesion::all();
-        return view('sanitarios/edit', ['sanitario' => $sanitario, 'cargos' => $cargos, 'profesiones' => $profesiones]);
+        return view('sanitarios/edit', ['sanitario' => $sanitario, 'cargos' => $cargos, 'profesiones' => $profesiones,
+                                            'especialidades' => $especialidades]);
     }
 
     
@@ -205,10 +207,58 @@ public function filtrar_prueba(Request $request)
             session()->flash('success', 'Personal Sanitario borrado correctamente. Si nos da tiempo haremos este mensaje internacionalizable y parametrizable');
         }
         else{
-            session()->flash('warning', 'El personal sanitario no pudo borrarse. Es probable que se deba a que tenga asociada información como citas que dependen de él.');
+            session()->flash('warning', 'El personal sanitario no pudo borrarse. Es probable que se deba a que tenga asociada información como sanitarios que dependen de él.');
         }
         return redirect()->route('sanitarios.index');
     }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+public function attach_especialidad(Request $request, Sanitario $sanitario)
+    {
+
+        //se mira si los datos introducidos de la especialidad son válidos
+        $this->validateWithBag('attach',$request, [
+            'especialidad_id' => 'required|exists:medicos,id',
+            'fechaInicio' => 'date',
+            'fechaFin' => 'date|after:inicio',
+        ]);
+
+        //se crea un registro en la tabla pivot entre sanitario y especialidad
+        $sanitario->especialidades()->attach($request->especialidad_id, [
+            'fechaInicio' => $request->fechaInicio,
+            'fechaFin' => $request->fechaFin,
+            
+        ]);
+        return redirect()->route('sanitarios.edit', $sanitario->id);
+    }
+
+    public function detach_especialidad(Sanitario $sanitario, Especialidad $especialidad)
+    {
+        $sanitario->especialidads()->detach($especialidad->id);
+        return redirect()->route('sanitarios.edit', $sanitario->id);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     ////////////////////////////////////////////PRUEBAS////////////////////////////////////////////////////////////////////////
 
