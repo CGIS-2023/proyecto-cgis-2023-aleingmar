@@ -41,6 +41,11 @@ class Sanitario extends Model
         return $this->belongsTo(Profesion::class);
     } 
 
+    //with pivot coge las variables de la tabla inteemdia y as mete en la tabla medicamentos (los asocia)
+    public function especialidades(){
+        return $this->belongsToMany(Especialidad::class)->using(SanitarioEspecialidadPivot::class)
+        ->withPivot('fechaInicio', 'fechaFin');
+    }
 
 
     #/////////////////// QUERYS ---> cunsultas usando el ORM de eloquence
