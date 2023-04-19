@@ -75,7 +75,7 @@
 
                             <th class="py-3 px-6 text-left">Profesion</th>
 
-                            <!-- <th class="py-3 px-6 text-left">Especialidad</th> -->
+                            <th class="py-3 px-6 text-left">Especialidad</th>
 
                             <th class="py-3 px-6 text-left">Correo</th>
 
@@ -111,6 +111,12 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <span class="font-medium">{{$sanitario->profesion->name}}</span>
+                                    </div>
+                                </td>
+
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <span class="font-medium">{{$sanitario->especialidades()->count()}}</span>
                                     </div>
                                 </td>
 

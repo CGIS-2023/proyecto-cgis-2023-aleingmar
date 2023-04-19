@@ -20,7 +20,7 @@ class SanitarioPolicy
         return true;
     }
 
-    
+    //referencia al show
     public function view(User $user, Sanitario $sanitario)
     {
         $res=false;

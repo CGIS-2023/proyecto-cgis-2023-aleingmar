@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Sanitario_Especialidad;
+use App\Models\Especialidad_Sanitario;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class SanitarioEspecialidadPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario_Especialidad  $sanitarioEspecialidad
+     * @param  \App\Models\Especialidad_Sanitario  $sanitarioEspecialidad
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Sanitario_Especialidad $sanitarioEspecialidad)
+    public function view(User $user, Especialidad_Sanitario $sanitarioEspecialidad)
     {
         //
     }
@@ -48,10 +48,10 @@ class SanitarioEspecialidadPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario_Especialidad  $sanitarioEspecialidad
+     * @param  \App\Models\Especialidad_Sanitario  $sanitarioEspecialidad
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Sanitario_Especialidad $sanitarioEspecialidad)
+    public function update(User $user, Especialidad_Sanitario $sanitarioEspecialidad)
     {
         //
     }
@@ -60,10 +60,10 @@ class SanitarioEspecialidadPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario_Especialidad  $sanitarioEspecialidad
+     * @param  \App\Models\Especialidad_Sanitario  $sanitarioEspecialidad
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Sanitario_Especialidad $sanitarioEspecialidad)
+    public function delete(User $user, Especialidad_Sanitario $sanitarioEspecialidad)
     {
         //
     }
@@ -72,10 +72,10 @@ class SanitarioEspecialidadPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario_Especialidad  $sanitarioEspecialidad
+     * @param  \App\Models\Especialidad_Sanitario  $sanitarioEspecialidad
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Sanitario_Especialidad $sanitarioEspecialidad)
+    public function restore(User $user, Especialidad_Sanitario $sanitarioEspecialidad)
     {
         //
     }
@@ -84,10 +84,10 @@ class SanitarioEspecialidadPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Sanitario_Especialidad  $sanitarioEspecialidad
+     * @param  \App\Models\Especialidad_Sanitario  $sanitarioEspecialidad
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Sanitario_Especialidad $sanitarioEspecialidad)
+    public function forceDelete(User $user, Especialidad_Sanitario $sanitarioEspecialidad)
     {
         //
     }

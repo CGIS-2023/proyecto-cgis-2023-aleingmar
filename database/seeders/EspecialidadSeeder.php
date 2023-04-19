@@ -32,7 +32,7 @@ class EspecialidadSeeder extends Seeder
         //seeder tabla intermedia entre medicamento y especialidad
 
         
-        DB::table('sanitario_especialidad')->insert([
+        DB::table('especialidad_sanitario')->insert([
             [
                 'sanitario_id' => 2,
                 'especialidad_id' => 1,
