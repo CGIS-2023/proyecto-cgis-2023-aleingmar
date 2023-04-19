@@ -33,7 +33,7 @@ class SanitarioController extends Controller
 
             //REVISAR SOLO QUERIA QUEDARME CON SANITARIO
             $sanitarios_query = Sanitario::join('users', 'sanitarios.profesion_id', 'users.id')
-            ->select('*');  
+            ->select('sanitarios.*');  
         }
         //con el DB no funciona pk te dan las cosas como string
         // solo llegan hasta aqui los usuarios de direccion
@@ -213,6 +213,8 @@ public function filtrar_prueba(Request $request)
     }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+//PARA ASOCIAR LAS POLICIES SE HACE CON EL CAN
+
 public function attach_especialidad(Request $request, Sanitario $sanitario)
     {
 

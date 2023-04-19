@@ -64,7 +64,18 @@ Route::resources([
     Route::get('/incidencias/{incidencia}/rechazarIncidencia', [IncidenciaController::class, 'rechazarIncidencia'])->name('incidencias.showRechazar');
     Route::put('/incidencias/{incidencia}/rechazarIncidencia', [IncidenciaController::class, 'updateRechazar'])->name('incidencias.updateRechazar');
 
+    //ASOCIAR RUTAS Y POLICIES A METODOS FUERA CRUD
+    //en el attach se podria poner {especialidad} y en el detach se podria quitar. SE PUEDE DE LAS DOS FORMAS.
+    //yo le estoy creando a un usuario en concreto una asociacion a una especialidad en concreto.
+    // esta especialidad en concreto se le puede dar en el formulario como request o en la ruta
 
+    Route::post('/sanitarios/{sanitario}/attach_especialidad', [SanitarioController::class, 'attach_especialidad'])
+        ->name('sanitarios.attachEspecialidad')
+        ->middleware('can:attach_especialidad,sanitario');
+
+    Route::delete('/sanitarios/{sanitario}/detach_especialidad/{especialidad}', [SanitarioController::class, 'detach_especialidad'])
+        ->name('sanitarios.detachEspecialidad')
+        ->middleware('can:detach_especialidad,sanitario');
 
 });
 

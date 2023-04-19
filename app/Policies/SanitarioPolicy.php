@@ -74,6 +74,18 @@ class SanitarioPolicy
         //
     }
 
+    /////////////////////////////////////////////////
+    //ASOCIAR POLICIES A METODOS FUERA DEL CRUUUD
+    
+    public function attach_especialidad(User $user, Sanitario $sanitario)
+    {
+        return true; 
+    }   
+
+    public function dettach_especialidad(User $user, Sanitario $sanitario)
+    {
+        return true; 
+    }   
 
     
 
