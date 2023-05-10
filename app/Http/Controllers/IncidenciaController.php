@@ -49,6 +49,7 @@ class IncidenciaController extends Controller
         }
 
 
+        
         $accesos = Acceso::join('sanitarios', 'accesos.sanitario_id', 'sanitarios.id')
         ->select('accesos.*')
         ->where('sanitarios.id', Auth::user()->sanitario->id)
