@@ -42,8 +42,9 @@ class IncidenciaController extends Controller
         // solo van a poder crear incidencias --> jefes y sanitarios (a nv personal)
 
         if($request->input('exclamacion')){
-            $acceso= $request->get('exclamacion');
-            
+            //$acceso= $request->get('exclamacion');
+            $acceso=Acceso::select('*')->where('accesos.id', $request->get('exclamacion'))->first();
+
             return view('incidencias/create', ['acceso' => $acceso, ]);
         }
 
