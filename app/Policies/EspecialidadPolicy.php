@@ -65,7 +65,7 @@ class EspecialidadPolicy
      */
     public function delete(User $user, Especialidad $especialidad)
     {
-        //
+    
     }
 
     /**

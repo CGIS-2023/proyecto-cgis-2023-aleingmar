@@ -12,6 +12,10 @@ class Especialidad extends Model
 
     protected $fillable = ['nombre'];
 
+
+
+    
+
     public function sanitarios(){
         return $this->belongsToMany(Sanitario::class)->withPivot('fechaInicio', 'fechaFin');
     }

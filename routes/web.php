@@ -78,8 +78,6 @@ Route::resources([
         ->middleware('can:detach_especialidad,sanitario');
 
 
-    
-    //Ruta que me redirija al entrar a sanitarios o a accesos dependiendo del perfil de usuario
 
     
 

@@ -142,7 +142,7 @@
                                             </a>
                                         </div>
 
-                                        @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 2 || \Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 1 )
+                                        
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a href="{{route('sanitarios.edit', $sanitario->id)}}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -162,7 +162,7 @@
                                                     </svg>
                                                 </a>
                                             </form>
-                                        @endif
+                                        
                                         </div>
                                     </div>
                                 </td>
