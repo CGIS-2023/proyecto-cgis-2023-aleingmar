@@ -8,6 +8,7 @@ use App\Models\Sanitario;
 use App\Models\User;
 use App\Models\Cargo;
 use App\Models\Profesion;
+use App\Models\Especialidad;
 
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Auth;
@@ -215,12 +216,12 @@ public function filtrar_prueba(Request $request)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //PARA ASOCIAR LAS POLICIES SE HACE CON EL CAN
 
-public function attach_especialidad(Request $request, Sanitario $sanitario)
+    public function attach_especialidad(Request $request, Sanitario $sanitario)
     {
 
         //se mira si los datos introducidos de la especialidad son válidos
         $this->validateWithBag('attach',$request, [
-            'especialidad_id' => 'required|exists:medicos,id',
+            'especialidad_id' => 'required|exists:sanitarios,id',
             'fechaInicio' => 'date',
             'fechaFin' => 'date|after:inicio',
         ]);
@@ -231,34 +232,14 @@ public function attach_especialidad(Request $request, Sanitario $sanitario)
             'fechaFin' => $request->fechaFin,
             
         ]);
-        return redirect()->route('sanitarios.edit', $sanitario->id);
+        return redirect()->route('sanitarios.index', $sanitario->id);
     }
 
     public function detach_especialidad(Sanitario $sanitario, Especialidad $especialidad)
     {
         $sanitario->especialidads()->detach($especialidad->id);
-        return redirect()->route('sanitarios.edit', $sanitario->id);
+        return redirect()->route('sanitarios.index', $sanitario->id);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

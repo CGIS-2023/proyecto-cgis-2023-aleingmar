@@ -64,6 +64,7 @@
 
 
 
+
                             <!-- Email Address -->
                             <div class="mt-4">
                                 <x-label for="email" :value="__('Email')" />
@@ -105,6 +106,12 @@
                         </div>
                     </form>
                 </div>
+
+                    
+
+
+
+
             </div>
         </div>
     </div>

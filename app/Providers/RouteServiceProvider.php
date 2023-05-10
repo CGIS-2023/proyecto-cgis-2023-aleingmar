@@ -19,7 +19,11 @@ class RouteServiceProvider extends ServiceProvider
      */
 
      //TOCAR PARA QUE AL PULSAR EN LOG IN AL INICIAR SESION REDIRIGIRTE A ALGUN LADO
-    public const HOME = '/dashboard';
+     //ESTO se ejecuta cuando se crea la aplicacion -> no se podria hacer la aplicación aquí
+
+
+    //public const HOME = '/dashboard';
+    
 
     /**
      * The controller namespace for the application.

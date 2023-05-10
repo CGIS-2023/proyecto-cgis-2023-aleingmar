@@ -25,6 +25,7 @@ class AuthenticatedSessionController extends Controller
      *
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
+     * 
      */
     public function store(LoginRequest $request)
     {
@@ -35,7 +36,21 @@ class AuthenticatedSessionController extends Controller
         //if(in_array(Auth::user()->tipo_usuario_id, [1,2])){
         //    return redirect()->route('citas.index');
         //}
-        return redirect()->intended(RouteServiceProvider::HOME);
+
+
+        //si soy un directivo quiero que me redirija a sanitarios al entrar
+        if(Auth::user()->sanitario->cargo->id == 1 & Auth::user()->sanitario->profesion->id == 2){
+        return redirect()->route('sanitarios.index');
+
+        }
+        else{
+        return redirect()->route('accesos.index');
+        }
+            
+       
+        
+
+        //return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
