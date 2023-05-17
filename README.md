@@ -1,35 +1,29 @@
 ﻿
-Contenido
+# Contenido
+# Índice
 
-[**Preguntas:**  **1**](#_Toc130322195)
+1. [Preguntas](#Preguntas)
+2. [Dominio_del_problema](#1.Dominio_del_problema)
+3. [Objetivos](#2.Objetivos)
+4. [Usuarios_del_sistema:](#3.Usuarios_del_sistema:)
+5. [Requisitos_de_información:](#4.Requisitos_de_información:)
+6. [Requisitos_funcionales:](#5.Requisitos_funcionales:)
+7. [Reglas_de_negocio:](#6.Reglas_de_negocio:)
+8. [Requisitos_no_funcionales:](#7.Requisitos_no_funcionales:)
+9. [Modelo_conceptual_UML](#8.Modelo_conceptual_UML:) 
 
-[**1.Dominio del problema:**  **1**](#_Toc130322196)
 
-[**2.Objetivos:**  **1**](#_Toc130322197)
-
-[**3.Usuarios del sistema:**  **2**](#_Toc130322198)
-
-[**4.Requisitos de información:**  **3**](#_Toc130322199)
-
-[**5.Requisitos funcionales:**  **4**](#_Toc130322200)
-
-[**6.Reglas de negocio:**  **8**](#_Toc130322201)
-
-[**7.Requisitos no funcionales:**  **9**](#_Toc130322202)
-
-[**8.Modelo conceptual UML****.** **10**](#_Toc130322203)
-
-# Preguntas:
+## Preguntas:
 
 Pk separar en dos tablas ofertas y solcitudes?
 
 Creo una tabla con información de la asistencia, o hago que me lo calcule el sistema.
 
-# 1.Dominio del problema:
+## 1.Dominio del problema:
 
 En la actualidad el sistema por el que se rigen las jornadas laborales de los profesionales sanitarios es muy complejo. Eventos como las guardias, los cambios de turnos o las rotaciones entre centros son el pan de cada día en el sector. Esto hace que la organización de este sistema sea muy difícil de gestionar y que en muchas ocasiones no se lleguen a registrar muchos de estos sucesos.
 
-# 2.Objetivos:
+## 2.Objetivos:
 
 El objetivo de nuestro sistema será capacitar a los profesionales del sector de una herramienta que les permita tanto a la dirección como a los profesionales sanitarios una forma de gestión que solvente eficaz y eficientemente la problemática anterior . Facilitando en gran medida los procesos y permitiendo que los propios profesionales tengan un papel protagonista en estos. Los principales objetivos de nuestro sistema serán:
 
@@ -53,7 +47,7 @@ Nuestro sistema tendrá como uno de sus objetivos llevar a cabo la gestión de l
 
 Nuestro sistema tendrá como uno de sus objetivos llevar a cabo el registro y la gestión de la información del personal sanitario. Permitiendo registrar información personal sobre los profesionales, sobre su especialidad, cargo…
 
-# 3.Usuarios del sistema:
+## 3.Usuarios del sistema:
 
 Los tipos de usuarios que podrán acceder al sistema y hacer un uso específico de este serán:
 
@@ -65,7 +59,7 @@ Jefes de guardia.
 
 Administrador
 
-# 4.Requisitos de información:
+## 4.Requisitos de información:
 
 **RI-001. Información sobre los usuarios:** El sistema deberá almacenar datos personales sobre todos los usuarios. Dirección de correo electrónico principal y segundario, contraseña y nombre.
 
@@ -87,7 +81,7 @@ Inicialmente un medico rellena todo menos el motivo de la respuesta y el estado 
 
 **RI-019. Información sobre asistencia :** El sistema deberá registrar datos sobre la asistencia del personal sanitario.
 
-# 5.Requisitos funcionales:
+## 5.Requisitos funcionales:
 
 **RF-001. Registro de usuarios: (todos los roles)**
 
@@ -271,7 +265,7 @@ El sistema deberá actualizar automáticamente el calendario mensual de guardias
 
 **RF-006. Creación del calendario con cuadrante de guardias :** El sistema deberá formar un calendario mensual con el cuadrante de guardias de cada especialidad y tipo. à MUY COMPLEJO
 
-# 6.Reglas de negocio:
+## 6.Reglas de negocio:
 
 **RN-001.  :** Un profesional sanitario no podrá ofertar más de 10 turnos en un mes.
 
@@ -291,12 +285,12 @@ El sistema deberá actualizar automáticamente el calendario mensual de guardias
 
 **RN-009.  :** Un intercambio de guardias entre profesionales residentes tendrá que ser validado tanto por el jefe de guardia como por el jefe de residentes al cargo.
 
-# 7.Requisitos no funcionales:
+## 7.Requisitos no funcionales:
 
 **RNF-001.  Disponibilidad del sistema:**
 
 El sistema debe de tener una disponibilidad del 99,96%.
 
-# 8.Modelo conceptual UML
+## 8.Modelo conceptual UML
 
 ![DIAGRAMA](diagramaconceptual.png)
