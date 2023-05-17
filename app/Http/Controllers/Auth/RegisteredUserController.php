@@ -14,6 +14,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Cargo;
+use App\Models\Profesion;
+use App\Models\Sanitario;
 
 class RegisteredUserController extends Controller
 {
@@ -28,7 +31,10 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $cargos = Cargo::all();
+        $profesiones = Profesion::all();
+        return view('auth.register', ['cargos' => $cargos, 'profesiones' => $profesiones]);
+        
     }
 
     /* public function create_medico()
@@ -47,50 +53,48 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
+        
+
+
+        //////////////
+        $this->validate($request, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
-            //'tipo_usuario_id' => 'required|numeric'
-        ];
-/* 
-        $tipo_usuario_id = intval($request->tipo_usuario_id);
-        if($tipo_usuario_id == 1){
-            //Médico
-            $reglas_medico = ['fecha_contratacion' => 'required|date',
-                'vacunado' => 'required|boolean',
-                'sueldo' => 'required|numeric',
-                'especialidad_id' => 'required|exists:especialidads,id'
-            ];
-            $rules = array_merge($reglas_medico, $rules);
-        }
-        elseif($tipo_usuario_id == 2){
-            //Paciente
-            $reglas_paciente = ['nuhsa' => ['required', 'string', 'max:12', 'min:12', new Nuhsa()]];
-            $rules = array_merge($reglas_paciente, $rules);
-        } */
-        $request->validate($rules);
+            //'telefono' => 'required|integer|digits:9',
+            'cargo_id' => 'required|exists:cargos,id',
+            'profesion_id' => 'required|exists:profesions,id',
+        ]);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            //'telefono' => $request->telefono,
         ]);
 
-        /* if($tipo_usuario_id == 1) {
-            //Médico
-            $medico = new Medico($request->all());
-            $medico->user_id = $user->id;
-            $medico->save();
-        }
-        elseif($tipo_usuario_id == 2){
-            //Paciente
-            $paciente = new Paciente($request->all());
-            $paciente->user_id = $user->id;
-            $paciente->save();
-        } */
+        //aqui mete gracias al fillable los datos en sanitario (crea una instancia)
+
+        $sanitario = new Sanitario($request->all());
+        $sanitario->user_id = $user->id;
+        $sanitario->save();
+        //return redirect(RouteServiceProvider::HOME);
+
+        ///////////
+
+        
+
+        
         $user->fresh();
         Auth::login($user);
         event(new Registered($user));
-        return redirect(RouteServiceProvider::HOME);
+        //return redirect(RouteServiceProvider::HOME);
+        if(Auth::user()->sanitario->cargo->id == 1 & Auth::user()->sanitario->profesion->id == 2){
+            return redirect()->route('sanitarios.index');
+    
+            }
+            else{
+            return redirect()->route('accesos.index');
+            }
     }
 }

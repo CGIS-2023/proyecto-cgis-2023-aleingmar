@@ -118,8 +118,8 @@ public function filtrar_prueba(Request $request)
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
             //'telefono' => 'required|integer|digits:9',
-            //'cargo_id' => 'required|exists:cargos,id',
-            //'profesion_id' => 'required|exists:profesions,id',
+            'cargo_id' => 'required|exists:cargos,id',
+            'profesion_id' => 'required|exists:profesions,id',
         ]);
 
         $user = User::create([
@@ -129,7 +129,7 @@ public function filtrar_prueba(Request $request)
             //'telefono' => $request->telefono,
         ]);
 
-        //DUDA
+        //aqui mete gracias al fillable los datos en sanitario (crea una instancia)
 
         $sanitario = new Sanitario($request->all());
         $sanitario->user_id = $user->id;
