@@ -293,4 +293,4 @@ El sistema debe de tener una disponibilidad del 99,96%.
 
 ## 8.Modelo conceptual UML
 
-![DIAGRAMA](diagramaconceptual.png)
+![DIAGRAMA](diagramaConceptual.png)
