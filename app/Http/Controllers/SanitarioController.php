@@ -237,7 +237,7 @@ public function filtrar_prueba(Request $request)
 
     public function detach_especialidad(Sanitario $sanitario, Especialidad $especialidad)
     {
-        $sanitario->especialidads()->detach($especialidad->id);
+        $sanitario->especialidades()->detach($especialidad->id);
         return redirect()->route('sanitarios.index', $sanitario->id);
     }
 

@@ -82,7 +82,7 @@ class SanitarioPolicy
         return true; 
     }   
 
-    public function dettach_especialidad(User $user, Sanitario $sanitario)
+    public function detach_especialidad(User $user, Sanitario $sanitario)
     {
         return true; 
     }   
