@@ -232,7 +232,7 @@ public function filtrar_prueba(Request $request)
             'fechaFin' => $request->fechaFin,
             
         ]);
-        return redirect()->route('sanitarios.index', $sanitario->id);
+        return redirect()->route('sanitarios.edit', $sanitario->id);
     }
 
     public function detach_especialidad(Sanitario $sanitario, Especialidad $especialidad)
