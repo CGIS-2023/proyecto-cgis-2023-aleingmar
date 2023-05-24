@@ -182,7 +182,7 @@ Quiero poder filtrar por profesión el listado de los sanitarios .
 
 **RNF-009. Compatibilidad**: El sistema debe ser compatible con otros sistemas.
 
-**RNF-0010. Compliancia**: El sistema debe cumplir con todas las leyes y reglamentos aplicables
+**RNF-010. Compliancia**: El sistema debe cumplir con todas las leyes y reglamentos aplicables
 
 El sistema debe de tener una disponibilidad del 99,96%.
 
