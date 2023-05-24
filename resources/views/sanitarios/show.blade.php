@@ -71,7 +71,7 @@
                         @if(\Illuminate\Support\Facades\Auth::user()->sanitario->cargo->id == 4 )
                         <div class="flex items-center justify-end mt-4">
                             <x-button type="button" class="bg-red-800 hover:bg-red-700">
-                                <a href={{route('dashboard')}}>
+                                <a href={{route('accesos.index')}}>
                                     {{ __('Volver') }}
                                 </a>
                             </x-button>
