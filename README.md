@@ -164,7 +164,25 @@ Quiero poder filtrar por profesión el listado de los sanitarios .
 
 ## 7.Requisitos no funcionales:
 
-**RNF-001.  Disponibilidad del sistema:**
+**RNF-001. Seguridad**: El sistema debe estar protegido contra el acceso no autorizado.
+
+**RNF-002. Actuación**: El sistema debe poder manejar el número requerido de usuarios sin ninguna degradación en el rendimiento.
+
+**RNF-003. Escalabilidad**: El sistema debe ser capaz de escalar hacia arriba o hacia abajo según sea necesario.
+
+**RNF-004. Disponibilidad**: El sistema debe estar disponible cuando sea necesario.
+
+**RNF-005. Mantenimiento**: El sistema debe ser fácil de mantener y actualizar.
+
+**RNF-006. Portabilidad**: El sistema debe poder ejecutarse en diferentes plataformas con cambios mínimos.
+
+**RNF-007. Fiabilidad**: El sistema debe ser confiable y cumplir con los requisitos del usuario.
+
+**RNF-008. Usabilidad**: El sistema debe ser fácil de usar y comprender.
+
+**RNF-009. Compatibilidad**: El sistema debe ser compatible con otros sistemas.
+
+**RNF-0010. Compliancia**: El sistema debe cumplir con todas las leyes y reglamentos aplicables
 
 El sistema debe de tener una disponibilidad del 99,96%.
 
