@@ -79,12 +79,12 @@ class SanitarioPolicy
     
     public function attach_especialidad(User $user, Sanitario $sanitario)
     {
-        return true; 
+        return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) ); 
     }   
 
     public function detach_especialidad(User $user, Sanitario $sanitario)
     {
-        return true; 
+        return (($user->sanitario->cargo->id==1) || ($user->sanitario->cargo->id==2) ); 
     }   
 
     
